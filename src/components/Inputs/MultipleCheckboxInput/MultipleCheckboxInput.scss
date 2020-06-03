@@ -1,0 +1,17 @@
+@import '../../../assets/styles/Variables';
+@import '../../../assets/styles/Responsive';
+
+.multiple-checkbox-input {
+  &__inputs {
+    display: flex;
+    margin-left: -$padding;
+
+    .hme-input {
+      padding: 0 $padding;
+    }
+
+    &--vertical {
+      flex-direction: column;
+    }
+  }
+}

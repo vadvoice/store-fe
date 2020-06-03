@@ -1,0 +1,25 @@
+@import "../../../assets/styles/Variables";
+
+.date-input {
+  display: flex;
+  align-items: center;
+
+  label {
+    margin: 0;
+    margin-right: $padding;
+    // for start/end label alignment, won't work with different label texts
+    width: 35px;
+  }
+
+  &__calendar-icon {
+    margin-right: $padding;
+  }
+
+  .rdt {
+    display: flex;
+
+    .form-control {
+      height: auto;
+    }
+  }
+}

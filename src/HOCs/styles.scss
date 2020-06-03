@@ -1,0 +1,39 @@
+
+@import '../assets/styles/Variables';
+@import '../assets/styles/Animations';
+
+.wrapper,
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  text-align: center;
+  background-color: $disabled-color;
+  min-height: 100vh;
+  max-height: 100vh;
+  height: 100vh;
+  transition: .3s;
+  &--navbar-opened {
+    transform: translate(250px, 0);
+  }
+  &--dark-theme {
+    background-color: $depth-color;
+  }
+
+  .container {
+    flex: 1;
+    width: 900px;
+    margin: 0 auto;
+    > div {
+      flex: 1;
+    }
+  }
+
+  @media only screen and (max-width: 900px) {
+    .container {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@import '../../../assets/styles/Variables';
+
+.image-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__toggle-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__preview {
+    max-width: 100px;
+    margin-right: $padding;
+    img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+
+  &__change-image input {
+    display: none;
+  }
+}

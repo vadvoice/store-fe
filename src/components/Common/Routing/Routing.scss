@@ -1,0 +1,30 @@
+@import '../../../assets/styles/_Variables.scss';
+
+$btnSize: 4em;
+
+.Routing {
+  display: flex;
+  border-bottom: 1px solid;
+  justify-content: center;
+  &__btn {
+    text-transform: capitalize;
+    overflow: hidden;
+    text-decoration: none;
+    width: $btnSize;
+    height: $btnSize;
+    background: $primary-color;
+    margin: $margin/2;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.3);
+    color: $secondary-color;
+    cursor: pointer;
+    transition: width 0.3s cubic-bezier(.36,.15,.21,1.94), background 0.3s;
+    &--active {
+      width: $btnSize * 3;
+      background: $accent-color;
+    }
+  }
+}

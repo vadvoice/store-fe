@@ -1,0 +1,30 @@
+@import '../../../assets/styles/Variables';
+
+.form-field {
+  margin-bottom: $padding;
+
+  label {
+    text-transform: capitalize;
+    font-weight: bold;
+  }
+  &--error {
+    &__error-desc {
+      text-align: left;
+      color: $error;
+      padding-left: calc(.5em + 3px);
+      margin-top: -$padding;
+      font-size: small;
+      text-transform: capitalize;
+    }
+
+    select,
+    input,
+    .rc-tree {
+      border: 1px solid $error;
+    }
+
+    label {
+      color: $error;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@import '../../assets/styles/Variables';
+
+.Main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  &__redirect {
+    position: relative;
+    z-index: $z-accent;
+  }
+}

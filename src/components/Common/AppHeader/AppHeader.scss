@@ -1,0 +1,21 @@
+@import '../../../assets/styles/Variables';
+@import '../../../assets/styles/Animations';
+
+.AppHeader {
+   display: flex;
+   justify-content: center;
+   padding: $margin;
+   .header-logo {
+      cursor: pointer;
+      background: center url("../../../assets/images/logo.jpeg");
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-size: 100%;
+      transition: scale 0.3s;
+
+      &:hover {
+         @include animation("pulse 1s linear infinite");
+      }
+   }
+}

@@ -1,0 +1,13 @@
+@import '../../../assets/styles/Variables';
+
+.checkbox-input {
+  display: flex;
+  align-items: center;
+  input {
+    min-width: 15px;
+  }
+  label {
+    margin: 0;
+    margin-left: $padding;
+  }
+}

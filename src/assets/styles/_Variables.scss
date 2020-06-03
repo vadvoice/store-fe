@@ -1,0 +1,39 @@
+// theme
+// font-size
+$font-size: 14px;
+// text colors
+$primary-text: #000000;
+$secondary-text: #06B1CB;
+$disabled-text: #F5F5F5;
+$secondary-2-text: #757575;
+$accent-text: rgb(212, 27, 62);
+// theme color
+$primary-color: #ffffff;
+$secondary-color: #06B1CB;
+$accent-color: #104C6B;
+$disabled-color: #bdbdbd;
+$depth-color: #223333;
+// service
+$error: #96281B;
+$info: #1890ff;
+$succses: #8bc34a;
+$warning: #FF6C00;
+// decorations
+$decoration: #bdbdbd;
+$gradient: linear-gradient(#000, #262A38);
+$border-radius: 3px;
+$border: 1px solid $decoration;
+$box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.20);
+// breakpoint media queries
+$mobile: 420px;
+$tablet: 768px;
+$desktop: 1224px;
+// spacing
+$padding: 0.5em;
+$margin: 1em;
+$gap: 2em;
+$inline-spacing: 0.1em;
+// layers
+$z-accent: 2;
+$z-index-modal: 999;
+$z-index-notify: $z-index-modal + 1; 

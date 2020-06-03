@@ -1,0 +1,36 @@
+@import "../../assets/styles/Variables";
+
+.hme-input {
+  text-align: left;
+  padding: $padding;
+  label {
+    margin-left: 3px;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  textarea {
+    width: 100%;
+    background-color: #f8f8f8;
+    padding: $margin;
+    border: 3px solid #ccc;
+    transition: 0.5s;
+    outline: none;
+    box-sizing: border-box;
+    border-radius: 4px;
+  }
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="password"]:focus,
+  input[type="number"]:focus,
+  textarea:focus {
+    border: 3px solid #555;
+  }
+
+  select {
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+}

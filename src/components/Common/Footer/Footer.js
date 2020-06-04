@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { constants } from '../../../config';
 
 import './Footer.scss';
 
 class Footer extends Component {
   render() {
     return <footer className="Footer">
-      <div>footer</div>
+      <small>{constants.copyright}</small>
     </footer>
   }
 }

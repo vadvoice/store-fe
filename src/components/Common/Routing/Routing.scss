@@ -4,7 +4,6 @@ $btnSize: 4em;
 
 .Routing {
   display: flex;
-  border-bottom: 1px solid;
   justify-content: center;
   &__btn {
     text-transform: capitalize;
@@ -21,10 +20,11 @@ $btnSize: 4em;
     box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.3);
     color: $secondary-color;
     cursor: pointer;
-    transition: width 0.3s cubic-bezier(.36,.15,.21,1.94), background 0.3s;
+    transition: all 0.3s cubic-bezier(.36,.15,.21,1.94);
     &--active {
       width: $btnSize * 3;
       background: $accent-color;
+      color: $accent-text;
     }
   }
 }

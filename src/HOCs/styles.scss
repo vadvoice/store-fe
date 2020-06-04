@@ -10,22 +10,18 @@
 
 .wrapper {
   text-align: center;
-  background-color: $disabled-color;
+  background-color: $secondary-color;
+  color: $secondary-text;
   min-height: 100vh;
-  max-height: 100vh;
-  height: 100vh;
   transition: .3s;
   &--navbar-opened {
     transform: translate(250px, 0);
   }
-  &--dark-theme {
-    background-color: $depth-color;
-  }
-
   .container {
     flex: 1;
     width: 900px;
     margin: 0 auto;
+    color: inherit;
     > div {
       flex: 1;
     }

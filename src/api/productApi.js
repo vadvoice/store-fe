@@ -1,3 +1,4 @@
+import { objectToFormData } from 'object-to-formdata';
 import {
   api,
   REQUEST_METHODS
@@ -10,7 +11,8 @@ export default {
     return api.request({
       url: `${baseUrl}`,
       method: REQUEST_METHODS.post,
-      data
+      data: objectToFormData(data),
+      headers: {'Content-Type': 'multipart/form-data' }
     })
   },
   get: (id) => {
@@ -25,18 +27,18 @@ export default {
       method: REQUEST_METHODS.get,
     })
   },
-  delete: (data) => {
+  delete: (productId) => {
     return api.request({
-      url: `${baseUrl}/${data.productId}`,
+      url: `${baseUrl}/${productId}`,
       method: REQUEST_METHODS.delete,
     })
   },
-  update: (data) => {
-    const { productId } = data;
+  update: (productId, data) => {
     return api.request({
       url: `${baseUrl}/${productId}`,
       method: REQUEST_METHODS.update,
-      data
+      data: objectToFormData(data),
+      headers: {'Content-Type': 'multipart/form-data' }
     })
   },
 };

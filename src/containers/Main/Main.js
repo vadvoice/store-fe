@@ -5,12 +5,15 @@ import LogoIcon from '../../assets/images/logo.jpeg';
 import './Main.scss';
 
 class Main extends Component {
-  redirectToChoicer = () => {
-    this.props.history.push('/home')
+  redirectToStore = () => {
+    this.props.history.push('/store')
   }
   render() {
     return <div className="Main">
       <img src={LogoIcon} alt={'logo'} />
+      <button onClick={this.redirectToStore}>
+        go to store
+      </button>
     </div>
   }
 }

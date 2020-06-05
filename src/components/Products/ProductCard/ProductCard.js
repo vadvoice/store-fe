@@ -49,7 +49,7 @@ class ProductCard extends React.Component {
    }
    cardBgImage() {
       return {
-         backgroundImage: `url(${this.props.product.image})`
+         backgroundImage: `url(${this.props.product.imageUrl})`
       }
    }
    handleMouseMove = (e) => {

@@ -1,0 +1,14 @@
+@import '../../../assets/styles/Variables';
+
+.EditingСard {
+   display: inline-block;
+   margin: 0 5% 5% 0;
+   padding: 5%;
+   border: $border;
+   border-radius: $border-radius;
+   max-width: 45%;
+   box-sizing: border-box;
+   img {
+      width: 100px;
+   }
+}

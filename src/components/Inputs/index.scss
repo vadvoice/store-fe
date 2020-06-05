@@ -5,6 +5,7 @@
   padding: $padding;
   label {
     margin-left: 3px;
+    font-size: small;
   }
   input[type="text"],
   input[type="email"],
@@ -13,8 +14,8 @@
   textarea {
     width: 100%;
     background-color: #f8f8f8;
-    padding: $margin;
-    border: 3px solid #ccc;
+    padding: $padding;
+    border: $border;
     transition: 0.5s;
     outline: none;
     box-sizing: border-box;
@@ -25,7 +26,8 @@
   input[type="password"]:focus,
   input[type="number"]:focus,
   textarea:focus {
-    border: 3px solid #555;
+    border: $border;
+    border-color: #555;
   }
 
   select {

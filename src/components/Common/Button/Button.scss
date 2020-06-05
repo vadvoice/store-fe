@@ -1,0 +1,71 @@
+@import '../../../assets/styles/Variables';
+@import '../../../assets/styles/Animations';
+
+.common-btn {
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  padding: $padding;
+  font-size: 16px;
+  cursor: pointer;
+  border-color: #e7e7e7;
+  color: black;
+  
+  &:disabled {
+    opacity: .6;
+  }
+
+  &:hover {
+    background: #e7e7e7;
+  }
+
+  &__icon {
+    height: 1em;
+    width: 2em;
+  }
+
+  &__processing {
+    display: inline-block;
+    margin-left: $padding;
+    svg {
+      @include animation('spin 3s linear infinite');
+    }
+  }
+
+  /* Green */
+  &--success {
+    border-color: #4CAF50;
+    color: green;
+    &:hover {
+      background-color: #4CAF50;
+      color: white;
+    }
+  }
+
+  &--info {
+    border-color: #2196F3;
+    color: dodgerblue;
+    &:hover {
+      background: #2196F3;
+      color: white;
+    }
+  }
+
+  &--warning {
+    border-color: #ff9800;
+    color: orange;
+    &:hover {
+      background: #ff9800;
+      color: white;
+    }
+  }
+
+  &--danger {
+    border-color: #f44336;
+    color: red;
+    &:hover {
+      background: #f44336;
+      color: white;
+    }
+  }
+}

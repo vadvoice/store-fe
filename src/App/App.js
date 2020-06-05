@@ -7,7 +7,8 @@ import history from '../history';
 import { WithLayout } from '../HOCs';
 
 import { NotFound } from '../components/Common';
-import { Home } from '../containers';
+import { Home, Main } from '../containers';
+import { Admin } from '../containers';
 
 import './App.scss';
 
@@ -16,7 +17,9 @@ function App() {
   return (
     <Router history={history}>
       <Switch>
-        <WithLayout path="/" navigationMode={mode} component={Home} />
+        <WithLayout exact path="/" navigationMode={mode} component={Main} />
+        <WithLayout path="/store" navigationMode={mode} component={Home} />
+        <WithLayout path="/admin" navigationMode={mode} component={Admin} />
 
         {/* not found page */}
         <WithLayout path="*" navigationMode={mode} component={NotFound} />

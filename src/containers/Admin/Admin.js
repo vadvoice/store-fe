@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { Routing, NotFound, Loader } from '../../components/Common';
-import { ProductEditor } from '../../components';
-
-import productApi from '../../api/productApi';
+import { ProductEditor, AuthLogin } from '../../components';
 
 import './Admin.scss';
+
+import productApi from '../../api/productApi';
+import adminAPi from '../../api/adminApi';
+import authApi from '../../api/authApi';
 
 const links = [{
    title: 'Products',
@@ -19,10 +21,21 @@ const links = [{
 class Admin extends Component {
    state = {
       isDataLoading: true,
-      products: []
+      products: [],
+      isAccessAllowed: false
    }
    async componentDidMount() {
-      await this.fetchProducts();
+      try {
+         await adminAPi.isAdmin();
+         await this.fetchProducts();
+         this.setState({
+            isAccessAllowed: true
+         })
+      } catch (e) {
+         this.setState({
+            isAccessAllowed: false
+         })
+      }
    }
    fetchProducts = async () => {
       this.setState({
@@ -45,7 +58,7 @@ class Admin extends Component {
          } else {
             await productApi.update(values._id, values)
          }
-         
+
       } catch (e) {
          console.error(e);
       } finally {
@@ -65,10 +78,24 @@ class Admin extends Component {
          isDataLoading: false
       })
    }
+   onLogin = async (values) => {
+      await authApi.login(values);
+      this.setState({
+         isAccessAllowed: true
+      })
+   }
    render() {
       const { match: { path } } = this.props;
-      const { isDataLoading, products } = this.state;
+      const { isDataLoading, products, isAccessAllowed } = this.state;
 
+      if (!isAccessAllowed) {
+         return <div className="Admin" data-testid="Admin">
+            <Switch>
+               <Route exact path={`${path}`} render={props => <AuthLogin {...props} actions={{ submit: this.onLogin }} />} />
+               <Route path="*" component={NotFound} />;
+            </Switch>
+         </div>
+      }
       return <div className="Admin" data-testid="Admin">
          {isDataLoading ? <Loader /> : null}
          <Routing path={path} links={links} />

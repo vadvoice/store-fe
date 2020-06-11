@@ -1,5 +1,7 @@
 .Products {
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: center;
+   &__content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+   }
 }

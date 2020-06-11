@@ -1,0 +1,16 @@
+@import '../../../assets/styles/Variables';
+
+.ProductCardContent {
+   display: flex;
+   &__preview {
+      flex-basis: 50%;
+      margin-right: $margin;
+      img {
+         width: 100%;
+      }
+   }
+
+   &__content {
+      flex: 1;
+   }
+}

@@ -4,3 +4,4 @@ export * from './AppHeader/AppHeader';
 export * from './Footer/Footer';
 export * from './Loader/Loader';
 export * from './Button/Button';
+export * from './Modal/Modal';

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { Routing, NotFound } from '../../components/Common';
-import { Store, Products } from '../../components';
+import { Products } from '../../components';
 import { Loader } from '../../components/Common';
 
 import productApi from '../../api/productApi';

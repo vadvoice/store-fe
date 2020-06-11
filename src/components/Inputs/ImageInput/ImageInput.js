@@ -1,4 +1,4 @@
-import React, { Component, createRef } from 'react';
+import React, { Component } from 'react';
 import classNames from 'classnames';
 
 import './ImageInput.scss';

@@ -13,7 +13,7 @@ function EditingСard(props) {
 
    const renderViewMode = () => {
       return <div>
-         <img src={imageUrl} />
+         <img src={imageUrl} alt={title} />
          <h4>{title}</h4>
          <p>{description}</p>
          <div>

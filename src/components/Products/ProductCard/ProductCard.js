@@ -1,106 +1,103 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import classNames from 'classnames';
+
 import './ProductCard.scss';
 
-class ProductCard extends React.Component {
-   constructor() {
-      super();
-      this.cardRef = React.createRef();
-   }
-   state = {
-      width: 0,
-      height: 0,
+const ProductCard = (props) => {
+   const cardRef = useRef(null);
+   const [coords, setCoors] = useState({
       mouseX: 0,
-      mouseY: 0,
-      mouseLeaveDelay: null,
-      isVisible: false
-   }
-   componentDidMount() {
-      const { offsetWidth, offsetHeight } = this.cardRef.current;
-      this.setState({
+      mouseY: 0
+   });
+   const [size, setSize] = useState({
+      widtd: 0,
+      height: 0
+   });
+   const [mouseLeaveDelay, setMouseLeaveDelay] = useState(0);
+   const [isVisible, setIsVisible] = useState(false);
+
+   useEffect(() => {
+      const { offsetWidth, offsetHeight } = cardRef.current;
+      setSize({
          width: offsetWidth,
          height: offsetHeight
       })
       setTimeout(() => {
-         this.setState({
-            isVisible: true
-         })
+         setIsVisible(true)
       }, 1000)
+   }, [])
+
+   const mousePX = () => {
+      return coords.mouseX / size.width;
    }
-   mousePX() {
-      return this.state.mouseX / this.state.width;
+   const mousePY = () => {
+      return coords.mouseY / size.height;
    }
-   mousePY() {
-      return this.state.mouseY / this.state.height;
-   }
-   cardStyle = () => {
-      const rX = this.mousePX() * 30;
-      const rY = this.mousePY() * -30;
+   const cardStyle = () => {
+      const rX = mousePX() * 30;
+      const rY = mousePY() * -30;
       return {
          transform: `rotateY(${rX}deg) rotateX(${rY}deg)`
       };
    }
-   cardBgTransform() {
-      const tX = this.mousePX() * -40;
-      const tY = this.mousePY() * -40;
+   const cardBgTransform = () => {
+      const tX = mousePX() * -40;
+      const tY = mousePY() * -40;
       return {
          transform: `translateX(${tX}px) translateY(${tY}px)`
       }
    }
-   cardBgImage() {
+   const cardBgImage = () => {
       return {
-         backgroundImage: `url(${this.props.product.imageUrl})`
+         backgroundImage: `url(${props.product.imageUrl})`
       }
    }
-   handleMouseMove = (e) => {
-      const { offsetLeft, offsetTop } = this.cardRef.current;
-      const mouseX = e.pageX - offsetLeft - this.state.width / 2;
-      const mouseY = e.pageY - offsetTop - this.state.height / 2;
+   const handleMouseMove = (e) => {
+      const { offsetLeft, offsetTop } = cardRef.current;
+      const mouseX = e.pageX - offsetLeft - size.width / 2;
+      const mouseY = e.pageY - offsetTop - size.height / 2;
 
-      this.setState({
+      setCoors({
          mouseX,
          mouseY
       })
    }
-   handleMouseEnter = () => {
-      clearTimeout(this.mouseLeaveDelay);
+   const handleMouseEnter = () => {
+      if (mouseLeaveDelay) {
+         clearTimeout(mouseLeaveDelay);
+      }
    }
-   handleMouseLeave = () => {
-      this.mouseLeaveDelay = setTimeout(() => {
-         this.setState({
+   const handleMouseLeave = () => {
+      setMouseLeaveDelay( setTimeout(() => {
+         setCoors({
             mouseX: 0,
             mouseY: 0
          })
-      }, 1000);
+      }, 1000))
    }
-   render() {
-      const { isVisible } = this.state;
-      const { title, description } = this.props.product;
-      return (
-         <div className={classNames({
-            'ProductCard': true,
-            'ProductCard--visible': isVisible
-         })}
-            onMouseMove={this.handleMouseMove}
-            onMouseEnter={this.handleMouseEnter}
-            onMouseLeave={this.handleMouseLeave}
-            ref={this.cardRef}
-         >
-            <div className="card" style={this.cardStyle()}>
-               <div className="card-bg" style={{ ...this.cardBgTransform(), ...this.cardBgImage() }}></div>
-               <div className="card-info">
-                  <h1 slot="header">{title}</h1>
-                  <p slot="content">{description}</p>
-                  <button
-                     onClick={() => console.log('buy')}
-                  >
-                     buy
-                  </button>
-               </div>
+
+   const { product: { title, description, _id }, selectProduct } = props;
+
+   return (
+      <div className={classNames({
+         'ProductCard': true,
+         'ProductCard--visible': isVisible
+      })}
+         onMouseMove={handleMouseMove}
+         onMouseEnter={handleMouseEnter}
+         onMouseLeave={handleMouseLeave}
+         ref={cardRef}
+         onClick={_ => selectProduct(_id)}
+      >
+         <div className="card" style={cardStyle()} >
+            <div className="card-bg" style={{ ...cardBgTransform(), ...cardBgImage() }}></div>
+            <div className="card-info">
+               <h1 slot="header">{title}</h1>
+               <p slot="content">{description}</p>
             </div>
          </div>
-      )
-   }
+      </div>
+   )
 
 }
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { EditingСard } from './EditingСard/EditingСard';
 import { Button } from '../Common/Button/Button';
 
@@ -6,13 +6,6 @@ import './ProductEditor.scss'
 
 const ProductEditor = (props) => {
    const [isNewCardAdding, setIsNewCardEdding] = useState(false);
-
-   useEffect(() => {
-      props.actions.fetchData();
-      return () => {
-         console.log('unmount')
-      }
-   }, [])
 
    const onSubmit = async (values) => {
       props.actions.sendProductData(values);

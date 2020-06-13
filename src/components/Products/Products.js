@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { ProductCard } from './ProductCard/ProductCard';
 import { Modal } from '../Common';
 import { ProductCardContent } from './ProductCardContent/ProductCardContent';

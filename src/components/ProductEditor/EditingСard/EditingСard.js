@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Form } from 'react-final-form';
-import { TextInput, ImageInput, FormField } from '../../../components/Inputs';
+import { TextInput, ImageInput, FormField, NumberInput } from '../../../components/Inputs';
 import { Button } from '../../../components/Common';
 import { required } from '../../../components/Inputs/Validators';
 
 import './EditingСard.scss';
 
 function EditingСard(props) {
-   const { product: { _id, imageUrl, title, description }, actions: { onSubmit, onDelete }, isEdit } = props;
+   const { product: { _id, imageUrl, title, description, amount }, actions: { onSubmit, onDelete }, isEdit } = props;
 
    const [isEditingMode, setIsEditingMode] = useState(isEdit);
 
@@ -16,6 +16,7 @@ function EditingСard(props) {
          <img src={imageUrl} alt={title} />
          <h4>{title}</h4>
          <p>{description}</p>
+         <p>{amount}</p>
          <div>
             <Button
                label={'edit'}
@@ -58,6 +59,13 @@ function EditingСard(props) {
                   placeholder={'description'}
                   label={'description'}
                   component={TextInput}
+                  validate={required}
+               />
+               <FormField
+                  name={'amount'}
+                  placeholder={'amount'}
+                  label={'amount'}
+                  component={NumberInput}
                   validate={required}
                />
                <FormField

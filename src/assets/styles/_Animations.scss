@@ -89,3 +89,18 @@
   }
 }
 
+
+@keyframes rippleEffect {
+  40% {
+      opacity: .35;
+  }
+  50% {
+      transform: translate3d(.5em, 0, 0) scale(1.1);
+      text-shadow: 0 0 20px #fff;
+  }
+  75% {
+      transform: translate3d(0, 0, 0) scale(1);
+      text-shadow: 0 0 0 #fff;
+      opacity: 1;
+  }
+}

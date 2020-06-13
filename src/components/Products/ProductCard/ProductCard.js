@@ -24,7 +24,7 @@ const ProductCard = (props) => {
       })
       setTimeout(() => {
          setIsVisible(true)
-      }, 1000)
+      }, 300 + (300 * props.index))
    }, [])
 
    const mousePX = () => {

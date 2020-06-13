@@ -4,7 +4,7 @@ import { Switch, Router } from 'react-router-dom';
 import { login } from '../modules/Auth/authAction';
 import history from '../history';
 
-import { WithLayout } from '../HOCs';
+import { WithLayout, FullSizeLayout } from '../HOCs';
 
 import { NotFound } from '../components/Common';
 import { Home, Main } from '../containers';
@@ -17,7 +17,7 @@ function App() {
   return (
     <Router history={history}>
       <Switch>
-        <WithLayout exact path="/" navigationMode={mode} component={Main} />
+        <FullSizeLayout exact path="/" navigationMode={mode} component={Main} />
         <WithLayout path="/store" navigationMode={mode} component={Home} />
         <WithLayout path="/admin" navigationMode={mode} component={Admin} />
 

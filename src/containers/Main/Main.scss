@@ -1,13 +1,83 @@
-@import '../../assets/styles/Variables';
+@import "../../assets/styles/Variables";
+@import "../../assets/styles/Animations";
 
 .Main {
+  $self: &;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.66) 100%, transparent), url("../../assets/images/main.jpg");
+  background-size: cover, cover;
+  background-position: center, center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex: 1;
-  &__redirect {
+  position: relative;
+  color: white;
+
+  .Main__title {
+    font-family: Osaka, Meiryo, "MS PGothic", sans-serif;
+    font-size: 2rem;
+    display: inline-block;
+    padding: $margin;
+    font-weight: 400;
     position: relative;
-    z-index: $z-accent;
+    opacity: 1;
+    transform: scale(1);
+    transition: transform 0.5s ease, opacity 1s ease;
+    margin: 10% 0;
+  }
+
+  &--loading {
+    #{ $self } {
+      &__title {
+        transform: scale(0.9);
+        opacity: 0;
+
+        &:before,
+        &:after {
+          width: 0;
+        }
+      }
+    }
+  }
+
+  &__title:before,
+  &__title:after {
+    height: 2px;
+    width: 100%;
+    content: "";
+    background: white;
+    display: block;
+    position: absolute;
+    transition: width 0.4s ease;
+    transition-delay: 0.8s;
+  }
+
+  &__title:before {
+    top: 0;
+    left: 0;
+  }
+
+  &__title:after {
+    bottom: 0;
+    right: 0;
+  }
+
+  .ripple {
+    * {
+      display: inline-block;
+      text-shadow: 0 0 0 #fff;
+      color: transparent;
+    }
+    &:hover {
+      * {
+        @include animation("rippleEffect 3s");
+      }
+    }
   }
 }

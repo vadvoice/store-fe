@@ -22,7 +22,7 @@ const Products = (props) => {
    return (
       <div className="Products">
          <div className="Products__content">
-            {products.map(product => <ProductCard selectProduct={selectProduct} key={product.title} product={product} />)}
+            {products.map((product, idx) => <ProductCard index={idx} selectProduct={selectProduct} key={product.title} product={product} />)}
          </div>
 
          <Modal

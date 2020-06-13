@@ -1,10 +1,12 @@
-@import '../../../assets/styles/Variables';
-@import '../../../assets/styles/Animations';
+@import "../../../assets/styles/Variables";
+@import "../../../assets/styles/Animations";
 
 .AppHeader {
+   $self: &;
    display: flex;
    justify-content: center;
    padding: $margin;
+   box-sizing: border-box;
    .header-logo {
       cursor: pointer;
       background: center url("../../../assets/images/logo.jpeg");
@@ -16,6 +18,34 @@
 
       &:hover {
          @include animation("pulse 1s linear infinite");
+      }
+   }
+
+   &--fullsize {
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: $z-accent;
+      img {
+         width: 30px;
+         border-radius: 50%;
+
+      }
+      #{ $self } {
+         &__social {
+            cursor: pointer;
+            &__link {
+               margin: 0 $padding;
+               font-size: large;
+               color: $primary-text;
+               transition: opacity .3s;
+               &:hover {
+                  opacity: .8;
+               }
+            }
+         }
       }
    }
 }

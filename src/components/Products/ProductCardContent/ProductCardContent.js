@@ -19,7 +19,7 @@ const ProductCardContent = (props) => {
          <div className="ProductCardContent__content">
             <h1>{title}</h1>
             <p>{description}</p>
-            <PriceTag amount={amount} currency={currency} />
+            <PriceTag product={product} />
             <AddToCart product={props.product} actions={{ ...actions }} cartProducts={cartProducts} />
          </div>
       </div>

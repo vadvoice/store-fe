@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addToCart, removeFromCart, checkout } from '../../modules/Cart/cartActions';
+
+import { constants } from '../../config';
 
 import { Switch, Route } from 'react-router-dom';
+import paymentApi from '../../api/paymentApi';
+import productApi from '../../api/productApi';
+import { addToCart, removeFromCart, checkout } from '../../modules/Cart/cartActions';
+
+import iziToast from 'izitoast';
 import { NotFound } from '../../components/Common';
 import { Products, Cart } from '../../components';
 import { Loader } from '../../components/Common';
 
-import productApi from '../../api/productApi';
-
 import './Home.scss';
-import paymentApi from '../../api/paymentApi';
 
 class HomeContainer extends Component {
   state = {
@@ -39,6 +42,9 @@ class HomeContainer extends Component {
         ...values
       });
       cartActions.checkout();
+      iziToast.success({
+        message:  constants.cart.successCheckout
+      })
     } catch(e) {
       console.error(e);
     }
@@ -87,8 +93,16 @@ const mapStateToProps = ({ cart: { cartProducts } }) => ({
 const mapActionsToProps = (dispatch) => {
   return {
     cartActions: {
-      removeFromCart: productId => dispatch(removeFromCart(productId)),
-      addToCart: product => dispatch(addToCart(product)),
+      removeFromCart: productId => {
+        dispatch(removeFromCart(productId))
+      },
+      addToCart: product => {
+        iziToast.success({
+          title: constants.cart.title,
+          message: constants.cart.productAdded
+        })
+        dispatch(addToCart(product))
+      },
       checkout: () => dispatch(checkout()),
     }
   }

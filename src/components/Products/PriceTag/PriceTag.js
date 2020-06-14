@@ -1,11 +1,17 @@
 import React from 'react'
+import { constants } from '../../../config';
+
 import './PriceTag.scss';
 
 const PriceTag = (props) => {
-   const { amount, currency } = props;
+   const { amount, currency, status } = props.product;
    return (
       <div className="PriceTag">
-         <span>{`${amount} ${currency}`}</span>
+         {
+            status !== 0
+            ? <span>{constants.product.soldOut}</span>
+            : <span>{`${amount} ${currency}`}</span>
+         }
       </div>
    )
 }

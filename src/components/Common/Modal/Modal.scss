@@ -1,10 +1,10 @@
 @import '../../../assets/styles/Variables';
 
 .Modal {
-   // .fullscreen {
-   //    width: 100% !important;
-   //    height: 100% !important;
-   // }
+   .fullscreen {
+      width: 100% !important;
+      height: 100% !important;
+   }
    &__header {
       margin: 0;
       padding: $gap 0;

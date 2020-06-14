@@ -1,10 +1,31 @@
 .Cart {
    display: flex;
    flex-direction: column;
+   flex: 1;
    &__products {
-
+      flex: 1;
    }
    &__checkout {
-      
+      &__row {
+         display: flex;
+         > div {
+            flex: 1;
+         }
+      }
+   }
+   &__total {
+      p {
+         text-align: right;
+      }
+   }
+   &__no-records {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      svg {
+         display: block;
+         font-size: xxx-large;
+      }
    }
 }

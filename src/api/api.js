@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { baseURL } from '../config';
+import iziToast from 'izitoast';
 
 const REQUEST_METHODS = {
   get: 'GET',
@@ -45,12 +46,11 @@ const api = {
           const { data, status, headers } = error.response;
           // The request was made and the server responded with a status code
           // that falls out of the range of 2xx
-          const { fail } = data;
           console.error({
             status: status,
             headers: headers
           });
-          reportProblem((fail && fail.message) || error);
+          reportProblem((data && data.message) || error);
         } else if (error.request) {
           // The request was made but no response was received
           // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
@@ -76,7 +76,10 @@ async function refreshToken() {
 }
 
 function reportProblem(message) {
-  console.log('message', message)
+  iziToast.error({
+    title: 'Error',
+    message
+  })
 }
 
 export {

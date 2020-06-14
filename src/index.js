@@ -8,6 +8,8 @@ import reduxStore from './modules/store';
 import App from './App/App';
 
 import './index.scss';
+// notifyer styles
+import 'izitoast/dist/css/iziToast.min.css';
 
 ReactDOM.render(
   <BrowserRouter>

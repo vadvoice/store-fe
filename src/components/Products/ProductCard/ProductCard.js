@@ -78,7 +78,7 @@ const ProductCard = (props) => {
       }, 1000))
    }
 
-   const { product: { title, description, _id, amount, currency }, actions: { selectProduct, addTocart } } = props;
+   const { product: { title, description, _id }, actions: { selectProduct } } = props;
 
    return (
       <div className={classNames({
@@ -93,7 +93,7 @@ const ProductCard = (props) => {
       >
          <div className="card" style={cardStyle()} >
             <div className="card-price">
-               <PriceTag amount={amount} currency={currency} />
+               <PriceTag product={props.product} />
             </div>
             <div className="card-bg" style={{ ...cardBgTransform(), ...cardBgImage() }}></div>
             <div className="card-info">

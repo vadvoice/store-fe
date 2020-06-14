@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { Routing, NotFound, Loader } from '../../components/Common';
 import { ProductEditor, AuthLogin } from '../../components';
+import iziToast from 'izitoast';
 
 import './Admin.scss';
 
@@ -72,11 +73,17 @@ class Admin extends Component {
       this.setState({
          isDataLoading: true
       })
-      await productApi.delete(productId);
-      await this.fetchProducts();
-      this.setState({
-         isDataLoading: false
-      })
+      try {
+         const removedProduct = await productApi.delete(productId);
+         await this.fetchProducts();
+         iziToast.success({
+            message: `${removedProduct._id} have been removed`
+         })
+      } finally {
+         this.setState({
+            isDataLoading: false
+         })
+      }
    }
    onLogin = async (values) => {
       await authApi.login(values);

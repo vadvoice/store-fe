@@ -20,7 +20,7 @@ export const Button = ({ success, info, warning, danger, onClick, className, lab
     type={submit ? 'submit' : 'button'}
     disabled={disabled}
   >
-    {icon && <img className="common-btn__icon" src={icon} alt={'t[language].button_icon'} />}
+    {icon ? icon : null}
     {label}
   </button>
 );

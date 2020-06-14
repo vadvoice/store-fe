@@ -13,4 +13,11 @@ import {
        data
      })
    },
+   checkout: (data) => {
+    return api.request({
+      url: `${baseUrl}/checkout`,
+      method: REQUEST_METHODS.post,
+      data
+    })
+   }
  }

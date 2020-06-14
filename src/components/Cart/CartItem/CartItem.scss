@@ -1,0 +1,30 @@
+@import '../../../assets/styles/Variables';
+
+.CartItem {
+   $img-size: 60px;
+   display: flex;
+   align-items: center;
+   background: $disabled-color;
+   border-radius: $border-radius;
+   transition: all .3s;
+   padding: $padding $margin;
+   margin-bottom: $margin;
+   h2 {
+      margin: 0;
+   }
+   &:hover {
+      box-shadow: $box-shadow;
+   }
+   img {
+      width: $img-size;
+      height: $img-size;
+      object-fit: contain;
+      border-radius: $border-radius;
+   }
+   &__info {
+      flex: 1;
+   }
+   &__price {
+      flex-basis: 20%;
+   }
+}

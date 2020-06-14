@@ -1,13 +1,14 @@
 @import '../../../assets/styles/_Variables.scss';
 
-$btnSize: 4em;
-
 .Routing {
+  $btnSize: 3em;
+  $notifySize: 15px;
+
   display: flex;
   justify-content: center;
   &__btn {
+    position: relative;
     text-transform: capitalize;
-    overflow: hidden;
     text-decoration: none;
     width: $btnSize;
     height: $btnSize;
@@ -21,6 +22,17 @@ $btnSize: 4em;
     color: $secondary-color;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(.36,.15,.21,1.94);
+    &__notify {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: $notifySize;
+      height: $notifySize;
+      background: $warning;
+      color: $primary-text;
+      border-radius: 50%;
+      font-size: small;
+    }
     &--active {
       width: $btnSize * 3;
       background: $accent-color;

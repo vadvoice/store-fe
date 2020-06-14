@@ -7,7 +7,7 @@ import './Products.scss';
 const Products = (props) => {
    const [isModalOpen, setIsModalOpen] = useState(false);
    const [selectedProduct, setSelectedProduct] = useState();
-   const { products } = props;
+   const { products, actions, cartProducts } = props;
 
    const selectProduct = (id) => {
       const selectedProduct = products.find(p => p._id === id);
@@ -22,7 +22,7 @@ const Products = (props) => {
    return (
       <div className="Products">
          <div className="Products__content">
-            {products.map((product, idx) => <ProductCard index={idx} selectProduct={selectProduct} key={product.title} product={product} />)}
+            {products.map((product, idx) => <ProductCard index={idx} key={product.title} product={product} actions={{ selectProduct, ...actions }} cartProducts={cartProducts} />)}
          </div>
 
          <Modal
@@ -30,7 +30,7 @@ const Products = (props) => {
             isModalOpen={isModalOpen}
             header="view"
          >
-            <ProductCardContent product={selectedProduct} />
+            <ProductCardContent product={selectedProduct} actions={{...actions}} cartProducts={cartProducts} />
          </Modal>
       </div>
    )

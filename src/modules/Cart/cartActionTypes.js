@@ -1,0 +1,10 @@
+const ADD_TO_CART = 'ADD_TO_CART';
+const REMOTE_FROM_CART = 'REMOTE_FROM_CART';
+const CHECKOUT = 'CHECKOUT';
+
+export {
+   ADD_TO_CART,
+   REMOTE_FROM_CART,
+   CHECKOUT
+}
+

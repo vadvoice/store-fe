@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import classNames from 'classnames';
+import { PriceTag } from '../PriceTag/PriceTag';
+import { AddToCart } from '../AddToCart/AddToCart';
 
 import './ProductCard.scss';
 
@@ -25,7 +27,7 @@ const ProductCard = (props) => {
       setTimeout(() => {
          setIsVisible(true)
       }, 300 + (300 * props.index))
-   }, [])
+   }, [props.index])
 
    const mousePX = () => {
       return coords.mouseX / size.width;
@@ -76,7 +78,7 @@ const ProductCard = (props) => {
       }, 1000))
    }
 
-   const { product: { title, description, _id }, selectProduct } = props;
+   const { product: { title, description, _id, amount, currency }, actions: { selectProduct, addTocart } } = props;
 
    return (
       <div className={classNames({
@@ -90,9 +92,12 @@ const ProductCard = (props) => {
          onClick={_ => selectProduct(_id)}
       >
          <div className="card" style={cardStyle()} >
+            <div className="card-price">
+               <PriceTag amount={amount} currency={currency} />
+            </div>
             <div className="card-bg" style={{ ...cardBgTransform(), ...cardBgImage() }}></div>
             <div className="card-info">
-               <h1 slot="header">{title}</h1>
+               <h2 slot="header">{title}</h2>
                <p slot="content">{description}</p>
             </div>
          </div>

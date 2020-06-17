@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import classNames from 'classnames';
 import { PriceTag } from '../PriceTag/PriceTag';
-import { AddToCart } from '../AddToCart/AddToCart';
 
 import './ProductCard.scss';
 

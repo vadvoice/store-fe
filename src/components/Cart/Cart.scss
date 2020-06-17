@@ -1,3 +1,5 @@
+@import '../../assets/styles/Animations';
+
 .Cart {
    display: flex;
    flex-direction: column;
@@ -26,6 +28,10 @@
       svg {
          display: block;
          font-size: xxx-large;
+         @include animation('move 3s ease infinite');
       }
+   }
+   button {
+      align-self: center;
    }
 }

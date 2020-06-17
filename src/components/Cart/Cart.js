@@ -81,6 +81,7 @@ const Cart = (props) => {
    if (cartProducts && !cartProducts.length) {
       return <div className="Cart">
          <h3 className="Cart__no-records"><FaShoppingCart /> {constants.cart.noRecordsYet}</h3>
+         <Button onClick={() => props.history.push('/store')} label="store" />
       </div>
    }
    return (

@@ -36,7 +36,7 @@ class HomeContainer extends Component {
   onCheckout = async (values) => {
     const { cartProducts, cartActions } = this.props;
     try {
-      const res = await paymentApi.checkout({
+      await paymentApi.checkout({
         products: cartProducts.map(p => p._id),
         amount: cartProducts.reduce((acc, prod) => acc + prod.amount, 0),
         ...values

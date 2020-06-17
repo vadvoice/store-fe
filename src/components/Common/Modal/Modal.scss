@@ -1,6 +1,10 @@
 @import '../../../assets/styles/Variables';
 
 .Modal {
+   > div {
+      display: flex;
+      flex-direction: column;
+   }
    .fullscreen {
       width: 100% !important;
       height: 100% !important;
@@ -11,6 +15,9 @@
       text-align: center;
    }
    &__content {
+      display: flex;
+      flex-direction: column;;
       padding: $gap $padding;
+      flex: 1;
    }
 }

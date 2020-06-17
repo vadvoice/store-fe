@@ -10,7 +10,6 @@ const Modal = (props) => {
          classes={{
             wrapperClassName: 'Modal'
          }}
-         isFullscreen
          isOpen={isModalOpen}
          requestClose={onClose}
       >

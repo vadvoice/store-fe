@@ -20,7 +20,7 @@ export const Button = ({ success, info, warning, danger, onClick, className, lab
     type={submit ? 'submit' : 'button'}
     disabled={disabled}
   >
-    {icon ? icon : null}
+    {icon ? <span className="common-btn__icon">{icon}</span> : null}
     {label}
   </button>
 );

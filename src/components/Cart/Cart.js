@@ -40,7 +40,7 @@ const Cart = (props) => {
                      <FormField
                         name="phone"
                         type="tel"
-                        pattern="[+]{1}[0-9]{12}"
+                        pattern="[+]{1}[0-9]{15}"
                         title="Phone in format +380638239194"
                         label={constants.common.fields.phone}
                         component={TextInput}

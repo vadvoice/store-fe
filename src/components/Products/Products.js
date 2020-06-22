@@ -8,10 +8,11 @@ const Products = (props) => {
    const [isModalOpen, setIsModalOpen] = useState(false);
    const [selectedProduct, setSelectedProduct] = useState();
    const { products, actions, cartProducts } = props;
+   const { fetchData } = actions;
 
    useEffect(() => {
-      props.actions.fetchData();
-   }, [])
+      fetchData();
+   }, [fetchData])
 
    const selectProduct = (id) => {
       const selectedProduct = products.find(p => p._id === id);

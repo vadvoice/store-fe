@@ -5,9 +5,10 @@ import { OrderItem } from './OrderItem/OrderItem';
 import './Orders.scss'
 
 const Orders = (props) => {
+   const { actions: { fetchData } } = props;
    useEffect(() => {
-      props.actions.fetchData();
-   }, [])
+      fetchData();
+   }, [fetchData])
 
    const { orders } = props;
    return (

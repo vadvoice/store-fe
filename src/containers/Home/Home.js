@@ -17,11 +17,8 @@ import './Home.scss';
 
 class HomeContainer extends Component {
   state = {
-    isDataLoading: true,
+    isDataLoading: false,
     products: []
-  }
-  async componentDidMount() {
-    await this.fetchProducts();
   }
   fetchProducts = async () => {
     this.setState({

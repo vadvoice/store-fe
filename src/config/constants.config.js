@@ -19,7 +19,13 @@ const constants = {
    product: {
       soldOut: 'Sold Out'
    },
+   order: {
+      resolved: 'resolved'
+   },
    common: {
+      actions: {
+         resolve: 'resolve'
+      },
       fields: {
          email: 'Email',
          userName: 'User name',

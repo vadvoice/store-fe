@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ProductCard } from './ProductCard/ProductCard';
 import { Modal } from '../Common';
 import { ProductCardContent } from './ProductCardContent/ProductCardContent';
@@ -8,6 +8,10 @@ const Products = (props) => {
    const [isModalOpen, setIsModalOpen] = useState(false);
    const [selectedProduct, setSelectedProduct] = useState();
    const { products, actions, cartProducts } = props;
+
+   useEffect(() => {
+      props.actions.fetchData();
+   }, [])
 
    const selectProduct = (id) => {
       const selectedProduct = products.find(p => p._id === id);

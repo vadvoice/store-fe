@@ -1,0 +1,9 @@
+@import '../../../assets/styles/Variables';
+
+.StatusLabel {
+   display: inline-block;
+   padding: $padding;
+   background: rgb(225, 201, 22);
+   border-radius: $border-radius;
+   color: $primary-text;
+}

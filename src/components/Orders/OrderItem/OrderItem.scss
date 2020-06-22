@@ -1,0 +1,17 @@
+@import '../../../assets/styles/Variables';
+
+.OrderItem {
+   border: $border;
+   padding: $padding;
+   &__products {
+      display: flex;
+      &__product {
+         &:hover {
+            border: $border;
+         }
+      }
+      img {
+         width: 100px;
+      }
+   }
+}

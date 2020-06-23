@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import { constants } from '../../config/constants.config';
 
-import './Main.scss';
 import { Button } from '../../components/Common';
+import statsApi from '../../api/statsApi';
+
+import './Main.scss';
 
 class Main extends Component {
   state = {
@@ -27,6 +29,8 @@ class Main extends Component {
         children[j].style.animationDelay = (j / 10) + 's';
       }
     }
+
+    statsApi.track();
   }
 
   redirectToStore = () => {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { Routing, NotFound, Loader } from '../../components/Common';
-import { ProductEditor, AuthLogin, Orders } from '../../components';
+import { ProductEditor, AuthLogin, Orders, Stats } from '../../components';
 import iziToast from 'izitoast';
 
 import './Admin.scss';
@@ -10,6 +10,7 @@ import productApi from '../../api/productApi';
 import adminAPi from '../../api/adminApi';
 import authApi from '../../api/authApi';
 import orderApi from '../../api/orderApi';
+import statsApi from '../../api/statsApi';
 
 const links = [{
    title: 'Products',
@@ -25,19 +26,23 @@ const links = [{
 
 class Admin extends Component {
    state = {
-      isDataLoading: false,
       products: [],
       orders: [],
+      stats: [],
+   
+      isDataLoading: false,
       isAccessAllowed: false
    }
    async componentDidMount() {
       try {
          await adminAPi.isAdmin();
          await this.fetchProducts();
+      
          this.setState({
             isAccessAllowed: true
          })
       } catch (e) {
+      
          this.setState({
             isAccessAllowed: false
          })
@@ -46,6 +51,7 @@ class Admin extends Component {
    // authorization
    onLogin = async (values) => {
       await authApi.login(values);
+   
       this.setState({
          isAccessAllowed: true
       })
@@ -116,9 +122,20 @@ class Admin extends Component {
       }
    }
 
+   // stats
+   fetchStats = async () => {
+      this.setState({
+         isDataLoading: true
+      })
+      const stats = await statsApi.stats();
+      this.setState({
+         stats,
+         isDataLoading: false
+      })
+   }
    render() {
       const { match: { path } } = this.props;
-      const { isDataLoading, products, isAccessAllowed, orders } = this.state;
+      const { isDataLoading, products, isAccessAllowed, orders, stats } = this.state;
 
       if (!isAccessAllowed) {
          return <div className="Admin" data-testid="Admin">
@@ -141,6 +158,12 @@ class Admin extends Component {
                {...props}
                actions={{ fetchData: this.fetchActiveOrders, resolveOrder: this.resolveOrder }}
                orders={orders}
+            />} />
+
+            <Route exact path={`${path}/stats`} render={props => <Stats
+               {...props}
+               actions={{ fetchData: this.fetchStats }}
+               stats={stats}
             />} />
 
             <Route path="*" component={NotFound} />

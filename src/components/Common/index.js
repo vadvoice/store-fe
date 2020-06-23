@@ -6,3 +6,4 @@ export * from './Loader/Loader';
 export * from './Button/Button';
 export * from './Modal/Modal';
 export * from './StatusLabel/StatusLabel';
+export * from './ImageGallery/ImageGallery';

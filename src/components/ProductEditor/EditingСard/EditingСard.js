@@ -73,6 +73,13 @@ function EditingСard(props) {
                   label={'image'}
                   component={ImageInput}
                />
+
+               <FormField
+                  name={'gallery'}
+                  label={'gallery'}
+                  multiple
+                  component={ImageInput}
+               />
                <div className="EditingСard__form__actions">
                   <Button
                      submit

@@ -2,7 +2,7 @@ import React from 'react';
 import { PriceTag } from '../PriceTag/PriceTag';
 import { AddToCart } from '../AddToCart/AddToCart';
 
-import { FaProductHunt } from 'react-icons/fa';
+import { ImageGallery } from '../../Common';
 
 import './ProductCardContent.scss';
 
@@ -12,11 +12,11 @@ const ProductCardContent = (props) => {
       return <></>;
    }
 
-   const { imageUrl, title, description, status } = product;
+   const { imageUrl, title, description, status, gallery } = product;
    return (
       <div className="ProductCardContent">
          <div className="ProductCardContent__preview">
-            {imageUrl ? <img src={imageUrl} alt={title} /> : <FaProductHunt />}
+            <ImageGallery images={[{name: title, url: imageUrl},...gallery]} />
          </div>
          <div className="ProductCardContent__content">
             <header>

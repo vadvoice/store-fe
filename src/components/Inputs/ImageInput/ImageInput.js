@@ -6,16 +6,24 @@ import './ImageInput.scss';
 class ImageInput extends Component {
   // processes uploaded image
   changeImage = async (e) => {
-    const { onChange } = this.props;
-    const file = e.target.files[0];
+    const { onChange, multiple } = this.props;
 
-    if (file) {
-      onChange(file);
+    if (multiple) {
+      onChange(e.target.files);
+    }  else {
+      const file = e.target.files[0];
+      if (file) {
+        onChange(file);
+      }
     }
   }
 
   renderPreview() {
-    const { value } = this.props;
+    const { value, multiple } = this.props;
+
+    if ( multiple && value && (value instanceof FileList || Array.isArray(value)) ) {
+      return <div>{value.length}</div>;
+    }
 
     if (value instanceof File) {
       const imageUrl = URL.createObjectURL(value);
@@ -29,7 +37,7 @@ class ImageInput extends Component {
   }
 
   render() {
-    const { name, className, disabled } = this.props;
+    const { name, className, disabled, multiple } = this.props;
 
     return (
       <div className={classNames(className, 'image-input')}>
@@ -38,6 +46,7 @@ class ImageInput extends Component {
         </div>
         <div className="image-input__change-image">
           <input
+            multiple={multiple}
             disabled={disabled}
             type="file"
             name={name}

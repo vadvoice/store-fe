@@ -1,5 +1,5 @@
 @import "../../../assets/styles/Variables";
-@import "../../../assets/styles/Animations";
+@import "../../../assets/styles/Mixins";
 
 .AppHeader {
    $self: &;
@@ -8,17 +8,38 @@
    align-items: center;
    padding: $margin;
    box-sizing: border-box;
-   .header-logo {
-      cursor: pointer;
-      background: center url("../../../assets/images/logo.jpeg");
-      width: 3em;
-      height: 3em;
-      border-radius: 50%;
-      background-size: 100%;
-      transition: scale 0.3s;
 
-      &:hover {
-         @include animation("pulse 1s linear infinite");
+   &__navigation {
+      $icon-size: 3em;
+      display: flex;
+      &__icon {
+         overflow: hidden;
+         position: relative;
+         margin-right: $margin;
+         width: $icon-size;
+         height: $icon-size;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         background: $primary-color;
+         border-radius: 50%;
+         color: $secondary-color;
+         &:after {
+            @include shine-animation;
+         }
+         &--active {
+            border: 1px solid $accent-text;
+         }
+         img {
+            border-radius: 50%;
+            height: inherit;
+            width: inherit;
+         }
+         svg {
+            width: 1em;
+            height: 1em;
+            font-size: large;
+         }
       }
    }
 
@@ -29,21 +50,24 @@
       left: 0;
       width: 100%;
       z-index: $z-accent;
-      img {
-         width: 30px;
-         border-radius: 50%;
-
-      }
+      $fullscreen-icon-size: 2em;
       #{ $self } {
+         &__navigation {
+            &__icon {
+               width: $fullscreen-icon-size;
+               height: $fullscreen-icon-size;
+            }
+         }
          &__social {
             cursor: pointer;
             &__link {
+               cursor: pointer;
                margin: 0 $padding;
                font-size: large;
                color: $primary-text;
-               transition: opacity .3s;
+               transition: opacity 0.3s;
                &:hover {
-                  opacity: .8;
+                  opacity: 0.8;
                }
             }
          }

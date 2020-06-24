@@ -1,3 +1,44 @@
+@import '../../../assets/styles/Variables';
+@import '../../../assets/styles/Animations';
+
 .NotFound {
-  
+   @import url("https://fonts.googleapis.com/css?family=Fira+Mono:400");
+
+   flex: 1;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   margin: 0;
+   color: inherit;
+
+   p {
+      text-transform: capitalize;
+   }
+   > div {
+      font-family: "Fira Mono", monospace;
+      letter-spacing: -7px;
+      font-size: 96px;
+      @include animation("glitch 1s linear infinite");
+   }
+
+   div:before,
+   div:after {
+      content: attr(title);
+      position: absolute;
+      left: 0;
+   }
+
+   div:before {
+      @include animation("glitchTop 1s linear infinite");
+      clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+   }
+
+   div:after {
+      @include animation("glitchBotom 1.5s linear infinite");
+      clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+      -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+   }
+
 }

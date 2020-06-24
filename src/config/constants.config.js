@@ -6,6 +6,15 @@ const constants = {
       facebook: 'https://www.facebook.com/ezio.guilty.9/',
       instagram: 'https://www.instagram.com/fury_grace/'
    },
+   navigation: {
+      store: 'store',
+      home: 'home',
+      cart: 'cart',
+      about: 'about',
+      facebook: 'facebook',
+      instagram: 'instagram',
+      explore: 'explore'
+   },
    main: {
       title: '(V)ision',
       explore: 'explore'
@@ -21,6 +30,10 @@ const constants = {
    },
    order: {
       resolved: 'resolved'
+   },
+   about: {
+      title: 'Vadym Shevchenko',
+      subTitle: 'developer & artist'
    },
    common: {
       actions: {

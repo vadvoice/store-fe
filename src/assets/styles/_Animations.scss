@@ -121,3 +121,64 @@
     transform: translateX(0);
   }
 }
+
+// not found page
+@keyframes glitch {
+  2%,
+  64% {
+     transform: translate(2px, 0) skew(0deg);
+  }
+  4%,
+  60% {
+     transform: translate(-2px, 0) skew(0deg);
+  }
+  62% {
+     transform: translate(0, 0) skew(5deg);
+  }
+}
+
+@keyframes glitchTop {
+  2%,
+  64% {
+     transform: translate(2px, -2px);
+  }
+  4%,
+  60% {
+     transform: translate(-2px, 2px);
+  }
+  62% {
+     transform: translate(13px, -1px) skew(-13deg);
+  }
+}
+
+@keyframes glitchBotom {
+  2%,
+  64% {
+     transform: translate(-2px, 0);
+  }
+  4%,
+  60% {
+     transform: translate(-2px, 0);
+  }
+  62% {
+     transform: translate(-22px, 5px) skew(21deg);
+  }
+}
+
+// app header
+@keyframes shine{
+  10% {
+    opacity: 1;
+    top: -30%;
+    left: -30%;
+    transition-property: left, top, opacity;
+    transition-duration: 0.7s, 0.7s, 0.15s;
+    transition-timing-function: ease;
+  }
+  100% {
+    opacity: 0;
+    top: -30%;
+    left: -30%;
+    transition-property: left, top, opacity;
+  }
+}

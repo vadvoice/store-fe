@@ -16,6 +16,7 @@ class Routing extends Component {
               exact={l.exact}
               className="Routing__btn"
               activeClassName={"Routing__btn--active"}
+              title={l.label}
             >
               {l.title}
               {l.notify ? <span className="Routing__btn__notify">{l.notify}</span> : null}

@@ -36,7 +36,6 @@ const Header = (props) => {
    if (fullsize) {
       return <header className="AppHeader AppHeader--fullsize">
          <div className="AppHeader__navigation" title={navigation.home}>
-            {/* <a className={'AppHeader__navigation__icon'} href={'/'} onClick={e => redirectToMainPage(e, '/')}><img src={Logo} alt="logo" /></a> */}
             <NavLink
                className="AppHeader__navigation__icon"
                exact
@@ -64,7 +63,6 @@ const Header = (props) => {
 
    return <header className="AppHeader">
       <div className="AppHeader__navigation">
-         {/* <a className={'AppHeader__navigation__icon'} href={'/'} onClick={e => redirectToMainPage(e, '/')}><img src={Logo} alt="logo" /></a> */}
          <NavLink
             className="AppHeader__navigation__icon"
             exact

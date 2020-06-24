@@ -4,20 +4,37 @@
    > div {
       display: flex;
       flex-direction: column;
-   }
-   .fullscreen {
-      width: 100% !important;
-      height: 100% !important;
+      > div {
+         flex-direction: column;
+         > div {
+            display: flex;
+            flex-direction: column;
+         }
+      }
    }
    &__header {
-      margin: 0;
-      padding: $gap 0;
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      border-bottom: 1px solid $decoration;
+      padding: $padding;
+      align-items: center;
+      color: inherit;
+      h2 {
+         margin: 0;
+         flex: 1;
+         text-transform: capitalize;
+      }
+      svg {
+         padding: $padding;
+         cursor: pointer;
+         transition: all .3s;
+      }
    }
    &__content {
       display: flex;
       flex-direction: column;;
       padding: $gap $padding;
       flex: 1;
+      overflow: scroll;
    }
 }

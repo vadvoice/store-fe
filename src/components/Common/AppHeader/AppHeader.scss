@@ -27,8 +27,11 @@
          &:after {
             @include shine-animation;
          }
+         &:hover {
+            transform: scale(1.05);
+         }
          &--active {
-            border: 1px solid $accent-text;
+            transform: scale(1.05);
          }
          img {
             border-radius: 50%;

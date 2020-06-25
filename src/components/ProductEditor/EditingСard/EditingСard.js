@@ -3,17 +3,18 @@ import { Form } from 'react-final-form';
 import { TextInput, ImageInput, FormField, NumberInput } from '../../../components/Inputs';
 import { Button } from '../../../components/Common';
 import { required } from '../../../components/Inputs/Validators';
+import { AiOutlineCloseCircle } from 'react-icons/ai';
 
 import './EditingСard.scss';
 
 function EditingСard(props) {
-   const { product: { _id, imageUrl, title, description, amount }, actions: { onSubmit, onDelete }, isEdit } = props;
+   const { product: { _id, imageUrl, title, description, amount }, actions: { onSubmit, onDelete, onGalleryItemDelete }, isEdit } = props;
 
    const [isEditingMode, setIsEditingMode] = useState(isEdit);
 
    const renderViewMode = () => {
       return <div>
-         <img src={imageUrl} alt={title} />
+         <img className={'EditingСard__img'} src={imageUrl} alt={title} />
          <h4>{title}</h4>
          <p>{description}</p>
          <p>{amount}</p>
@@ -34,6 +35,22 @@ function EditingСard(props) {
          </div>
       </div>
    };
+
+   const editGallery = (gallery = []) => {
+      return <div className="EditingСard__form__gallery">
+         {
+            gallery.map(galleryItem => {
+               return <div key={galleryItem._id} className="EditingСard__form__gallery__item">
+                  <i onClick={_ => {
+                     onGalleryItemDelete(props.product._id, galleryItem.name);
+                     setIsEditingMode(false);
+                  }}><AiOutlineCloseCircle /></i>
+                  <img width={40} src={galleryItem.url} alt={galleryItem._id} />
+               </div>
+            })
+         }
+      </div>
+   }
 
    const renderEditMode = () => {
       return <Form
@@ -80,6 +97,7 @@ function EditingСard(props) {
                   multiple
                   component={ImageInput}
                />
+               {editGallery(props.product && props.product.gallery)}
                <div className="EditingСard__form__actions">
                   <Button
                      submit

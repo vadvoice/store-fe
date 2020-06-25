@@ -6,6 +6,7 @@ import './ProductEditor.scss'
 
 const ProductEditor = (props) => {
    const [isNewCardAdding, setIsNewCardEdding] = useState(false);
+   const { onGalleryItemDelete } = props.actions;
 
    const onSubmit = async (values) => {
       props.actions.sendProductData(values);
@@ -18,10 +19,14 @@ const ProductEditor = (props) => {
    const { products } = props;
    return (
       <div className="ProductEditor">
-         {!isNewCardAdding ? <Button label="new" onClick={_ => setIsNewCardEdding(true)} /> : null}
-         {isNewCardAdding ? <EditingСard product={{}} actions={{ onSubmit }} isEdit={true} /> : null}
+         <div className="ProductEditor__actions">
+            {!isNewCardAdding ? <Button label="new" onClick={_ => setIsNewCardEdding(true)} /> : null}
+            {isNewCardAdding ? <EditingСard product={{}} actions={{ onSubmit, onDelete: deleteProduct, onGalleryItemDelete: onGalleryItemDelete }} isEdit={true} /> : null}
+         </div>
 
-         {products.map(product => <EditingСard key={product.title} product={product} actions={{ onSubmit, onDelete: deleteProduct }} />)}
+         <div className="ProductEditor__cards">
+            {products.map(product => <EditingСard key={product.title} product={product} actions={{ onSubmit, onDelete: deleteProduct, onGalleryItemDelete: onGalleryItemDelete }} />)}
+         </div>
       </div>
    )
 }

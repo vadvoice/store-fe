@@ -6,11 +6,11 @@
   justify-content: center;
 
   &__preview {
-    max-width: 100px;
+    $img-size: 50px;
     margin-right: $padding;
     img {
-      width: 70px;
-      height: 70px;
+      width: $img-size;
+      height: $img-size;
       border-radius: 50%;
       object-fit: cover;
     }

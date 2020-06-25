@@ -122,6 +122,23 @@ class Admin extends Component {
       }
    }
 
+   onGalleryItemDelete = async (productId, galleryItemId) => {
+      this.setState({
+         isDataLoading: true
+      })
+      try {
+         await productApi.deleteGalleryItem(productId, galleryItemId);
+         await this.fetchProducts();
+         iziToast.success({
+            message: `${galleryItemId} gallery item have been removed`
+         })
+      } finally {
+         this.setState({
+            isDataLoading: false
+         })
+      }
+   }
+
    // stats
    fetchStats = async () => {
       this.setState({
@@ -151,7 +168,7 @@ class Admin extends Component {
          <Switch>
             <Route exact path={`${path}`} render={props => <ProductEditor
                {...props}
-               actions={{ fetchData: this.fetchProducts, sendProductData: this.sendProductData, deleteProduct: this.deleteProduct }}
+               actions={{ fetchData: this.fetchProducts, sendProductData: this.sendProductData, deleteProduct: this.deleteProduct, onGalleryItemDelete: this.onGalleryItemDelete }}
                products={products}
             />} />
             <Route exact path={`${path}/orders`} render={props => <Orders

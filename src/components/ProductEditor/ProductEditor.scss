@@ -1,0 +1,11 @@
+@import '../../assets/styles/Variables';
+
+.ProductEditor {
+   &__actions {
+      margin: $gap 0;
+   }
+   &__cards {
+      display: flex;
+      flex-wrap: wrap;
+   }
+}

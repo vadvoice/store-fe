@@ -8,7 +8,26 @@
    border-radius: $border-radius;
    max-width: 45%;
    box-sizing: border-box;
-   img {
-      width: 100px;
+   min-width: 250px;
+   &__img {
+      width: 100%;
+      max-width: 300px;
+   }
+   &__form {
+      &__gallery {
+         margin: $margin 0;
+         display: flex;
+         &__item {
+            position: relative;
+            margin-right: $margin;
+            padding: $padding;
+            i {
+               cursor: pointer;
+               position: absolute;
+               top: 0;
+               right: -5px;
+            }
+         }
+      }
    }
 }

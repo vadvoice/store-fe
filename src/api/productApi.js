@@ -50,6 +50,12 @@ export default {
       method: REQUEST_METHODS.delete,
     })
   },
+  deleteGalleryItem: (productId, itemId) => {
+    return api.request({
+      url: `${baseUrl}/${productId}/gallery/${itemId}`,
+      method: REQUEST_METHODS.delete,
+    })
+  },
   update: (productId, data) => {
     return api.request({
       url: `${baseUrl}/${productId}`,

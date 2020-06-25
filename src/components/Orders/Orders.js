@@ -13,7 +13,11 @@ const Orders = (props) => {
    const { orders } = props;
    return (
       <div className="Orders">
-        {orders.map(order => <OrderItem key={order._id} order={order} resolve={props.actions.resolveOrder} />)}
+         {
+            orders.length
+            ? orders.map(order => <OrderItem key={order._id} order={order} resolve={props.actions.resolveOrder} />)
+            : <h4>not orders yet</h4>
+         }
       </div>
    )
 }

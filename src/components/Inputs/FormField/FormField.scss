@@ -1,4 +1,5 @@
 @import '../../../assets/styles/Variables';
+@import '../../../assets/styles/Animations';
 
 .form-field {
   margin-bottom: $padding;
@@ -15,6 +16,7 @@
       margin-top: -$padding;
       font-size: small;
       text-transform: capitalize;
+      @include animation('shake 1s infinite')
     }
 
     select,

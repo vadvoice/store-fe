@@ -24,6 +24,7 @@
          background: $primary-color;
          border-radius: 50%;
          color: $secondary-color;
+         box-shadow: $box-shadow;
          &:after {
             @include shine-animation;
          }
@@ -71,6 +72,9 @@
                transition: opacity 0.3s;
                &:hover {
                   opacity: 0.8;
+               }
+               svg {
+                  color: $dominant-text;
                }
             }
          }

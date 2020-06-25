@@ -2,28 +2,30 @@
 // font-size
 $font-size: 14px;
 // theme color
-$primary-color: #242423;
-$secondary-color: #edf2f4;
-$accent-color: #0353a4;
-$disabled-color: #8d99ae;
+$dominant-color: linear-gradient(21deg, rgba(40, 114, 139, 1) 0%, rgba(191, 59, 94, 1)100%);;
+$primary-color: linear-gradient(21deg, rgba(129,164,189,1) 0%, rgba(213,225,235,1) 100%);;
+$secondary-color: rgba(22, 22, 22, 1);
+$accent-color: #2A70D3;
+$disabled-color: #497799;
 
 // text colors
-$primary-text: #fff;
-$secondary-text: #1C2541;
+$dominant-text: #fff;
+$primary-text: #363636;
+$secondary-text: rgba(255, 68, 49, 1);
 $accent-text: #d8e2dc;
 $disabled-text: #1C2541;
 
 // service
-$error: #96281B;
+$error: #FC0505;
 $info: #1890ff;
 $succses: #8bc34a;
-$warning: #FF6C00;
+$warning: #FF6D00;
 // decorations
 $decoration: #bdbdbd;
 $gradient: linear-gradient(#000, #262A38);
 $border-radius: 3px;
 $border: 1px solid $decoration;
-$box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.20);
+$box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.3);
 // breakpoint media queries
 $mobile: 420px;
 $tablet: 768px;

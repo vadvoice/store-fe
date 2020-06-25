@@ -87,6 +87,7 @@ const Cart = (props) => {
    return (
       <div className="Cart">
          <div className="Cart__products">
+            <h2>{constants.cart.selectedProducts}</h2>
             {cartProducts.map(p => {
                return <CartItem key={p.title} cartProducts={cartProducts} product={p} actions={actions} />
             })}

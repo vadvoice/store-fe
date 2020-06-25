@@ -1,17 +1,20 @@
-@import '../../../assets/styles/Variables';
+@import "../../../assets/styles/Variables";
+@import "../../../assets/styles/Animations";
 
-.Modal {
-   > div {
-      display: flex;
-      flex-direction: column;
-      > div {
-         flex-direction: column;
-         > div {
-            display: flex;
-            flex-direction: column;
-         }
-      }
+.ReactModal__Content {
+   @media (prefers-color-scheme: dark) {
+      background: $secondary-color !important;
+      color: $secondary-text;
+      border: 1px solid $disabled-text !important;
    }
+
+   @media (prefers-color-scheme: light) {
+      background: $primary-color !important;
+      color: $primary-text;
+   }
+
+   @include animation('jumpOut 1s');
+
    &__header {
       display: flex;
       justify-content: center;
@@ -23,16 +26,17 @@
          margin: 0;
          flex: 1;
          text-transform: capitalize;
+         text-align: center;
       }
       svg {
          padding: $padding;
          cursor: pointer;
-         transition: all .3s;
+         transition: all 0.3s;
       }
    }
    &__content {
       display: flex;
-      flex-direction: column;;
+      flex-direction: column;
       padding: $gap $padding;
       flex: 1;
       overflow: scroll;

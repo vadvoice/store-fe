@@ -21,6 +21,7 @@ const Products = (props) => {
    }
 
    const requestClose = () => {
+      setSelectedProduct(null);
       setIsModalOpen(false);
    }
 

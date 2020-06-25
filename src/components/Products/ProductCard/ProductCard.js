@@ -11,7 +11,7 @@ const ProductCard = (props) => {
       mouseY: 0
    });
    const [size, setSize] = useState({
-      widtd: 0,
+      width: 0,
       height: 0
    });
    const [mouseLeaveDelay, setMouseLeaveDelay] = useState(0);
@@ -38,7 +38,7 @@ const ProductCard = (props) => {
       const rX = mousePX() * 30;
       const rY = mousePY() * -30;
       return {
-         transform: `rotateY(${rX}deg) rotateX(${rY}deg)`
+         transform: `rotateY(${rX}deg) rotateX(${rY}deg) translateZ(0px)`
       };
    }
    const cardBgTransform = () => {
@@ -88,7 +88,9 @@ const ProductCard = (props) => {
          onMouseEnter={handleMouseEnter}
          onMouseLeave={handleMouseLeave}
          ref={cardRef}
-         onClick={_ => selectProduct(_id)}
+         onClick={_ => {
+            selectProduct(_id)
+         }}
       >
          <div className="card" style={cardStyle()} >
             <div className="card-price">

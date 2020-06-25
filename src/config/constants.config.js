@@ -23,7 +23,8 @@ const constants = {
       title: 'Cart',
       successCheckout: 'The order has been successfully created, we will contact you soon',
       productAdded: 'Item added',
-      noRecordsYet: 'No records yet'
+      noRecordsYet: 'No records yet',
+      selectedProducts: 'Selected Products'
    },
    product: {
       soldOut: 'Sold Out'

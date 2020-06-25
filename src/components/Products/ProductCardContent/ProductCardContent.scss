@@ -1,4 +1,5 @@
 @import '../../../assets/styles/Variables';
+@import '../../../assets/styles/Responsive';
 
 .ProductCardContent {
    display: flex;
@@ -29,5 +30,11 @@
       &__description {
          flex: 1;
       }
+      &__actions {
+         text-align: center;
+      }
+   }
+   @include below($tablet) {
+      flex-direction: column;
    }
 }

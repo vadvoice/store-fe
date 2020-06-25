@@ -1,24 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withRouter, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { FaFacebookSquare, FaShoppingCart, FaHome, FaInfoCircle } from 'react-icons/fa';
 import { AiFillInstagram } from 'react-icons/ai';
-import Logo from '../../../assets/images/logo.jpeg';
+import LogoDark from '../../../assets/images/logo_dark.jpeg'
+import LogoLight from '../../../assets/images/logo_light.jpg';
 
 import { constants } from '../../../config';
 import { Routing } from '../Routing/Routing';
+import { THEMES } from '../../../services/systemColorScheme';
 
 import './AppHeader.scss';
 
 const Header = (props) => {
+   const [systemColorScheme, setSystemColorScheme] = useState(THEMES.light);
    const { fullsize, cartProducts } = props;
    const { navigation } = constants;
-   const redirectToMainPage = (e, path) => {
-      if (e) {
-         e.preventDefault();
+
+   window.matchMedia("(prefers-color-scheme: dark)").addListener(
+      e => e.matches && setSystemColorScheme(THEMES.dark)
+   );
+   window.matchMedia("(prefers-color-scheme: light)").addListener(
+      e => e.matches && setSystemColorScheme(THEMES.light)
+   );
+
+   const renderLogo = () => {
+      switch (systemColorScheme) {
+         case THEMES.dark: {
+            return <img src={LogoDark} alt="logo" />
+         }
+         default: {
+            return <img src={LogoLight} alt="logo" />
+         }
       }
-      props.history.push(path);
    }
 
    const links = [{
@@ -43,7 +58,7 @@ const Header = (props) => {
                activeClassName={"AppHeader__navigation__icon--active"}
                title={'home'}
             >
-               <img src={Logo} alt="logo" />
+               {renderLogo()}
             </NavLink>
             <NavLink
                className="AppHeader__navigation__icon"
@@ -70,7 +85,7 @@ const Header = (props) => {
             activeClassName={"AppHeader__navigation__icon--active"}
             title={'home'}
          >
-            <img src={Logo} alt="logo" />
+            {renderLogo()}
          </NavLink>
          <NavLink
             className="AppHeader__navigation__icon"

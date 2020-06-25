@@ -20,11 +20,11 @@ const ProductCardContent = (props) => {
          </div>
          <div className="ProductCardContent__content">
             <header>
-               <h1>
+               <h3>
                   {title}
-               </h1>
-               <PriceTag product={product} />
+               </h3>
             </header>
+            <PriceTag product={product} />
             <div className="ProductCardContent__content__description">
                <p>{description}</p>
             </div>

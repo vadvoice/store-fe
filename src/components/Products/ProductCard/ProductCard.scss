@@ -9,6 +9,7 @@
    cursor: pointer;
    opacity: 0;
    transition: opacity 1s;
+   position: relative;
 
    &--visible {
       opacity: 1;
@@ -91,6 +92,12 @@
       color: #fff;
       transform: translateY(40%);
       transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+      h1 {
+         font-family: "Playfair Display";
+         font-size: 36px;
+         font-weight: 700;
+         text-shadow: rgba(black, 0.5) 0 10px 10px;
+      }
 
       p {
          opacity: 0;
@@ -117,12 +124,5 @@
          transform: translateY(100%);
          transition: 5s 1s $returnEasing;
       }
-   }
-
-   .card-info h1 {
-      font-family: "Playfair Display";
-      font-size: 36px;
-      font-weight: 700;
-      text-shadow: rgba(black, 0.5) 0 10px 10px;
    }
 }

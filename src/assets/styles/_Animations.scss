@@ -71,21 +71,21 @@
 
 @keyframes jumpOut {
   0% {
-    transform: scale(.7);
+    transform: translate(-50%, -50%) scale(.8);
     opacity: 0;
   }
   40% {
-    transform: scale(1.2);
+    transform: translate(-50%, -50%) scale(1.05);
     opacity: 1;
   }
   60% {
-    transform: scale(.8);
+    transform: translate(-50%, -50%) scale(.95);
   }
   80% {
-    transform: scale(1.1);
+    transform: translate(-50%, -50%) scale(1);
   }
   100% {
-    transform: scale(1);
+    transform: translate(-50%, -50%) scale(1);
   }
 }
 
@@ -180,5 +180,23 @@
     top: -30%;
     left: -30%;
     transition-property: left, top, opacity;
+  }
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(1px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-2px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(2px, 0, 0);
   }
 }

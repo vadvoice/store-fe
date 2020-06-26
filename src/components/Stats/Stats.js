@@ -2,38 +2,53 @@ import React, { useEffect } from 'react';
 import moment from 'moment';
 
 import './Stats.scss';
+import InfoRow from '../Common/InfoRow/InfoRow';
 
 const Stats = (props) => {
-   const { actions: { fetchData }, stats } = props;
+   const { actions: { fetchData }, data: { stats, feedbacks } } = props;
 
    useEffect(() => {
       fetchData()
    }, [fetchData])
 
    return (
-      <div>
+      <div className="Stats">
          <h1>Stats</h1>
-         {
-            stats.length
-            ? stats.map(s => {
-               return <div key={s.ip + s.timestamp}>
-                  <div>
-                     {s.ip}
-                     <p>
-                        <strong>browser/os</strong><i>{s.userAgent.browser}/{s.userAgent.os}</i>
-                     </p>
-                     <p>
-                        <strong>timezone/city:</strong><i>{s.stats.timezone}/{s.stats.city}</i>
-                     </p>
-                     <p>
-                        <strong>visit:</strong><i>{moment(s.timestamp).format()}</i>
-                     </p>
-                  </div>
-                  <hr />
-               </div>
-            })
-            : <h4>no stats yet</h4>
-         }
+         <div className="Stats__container">
+            <div className="Stats__container__stats">
+               {
+                  stats.length
+                     ? stats.map(s => {
+                        return <div key={s.ip + s.timestamp}>
+                           <div>
+                              <h4>{s.ip}</h4>
+                              <InfoRow data={{ name: 'browser/os', value: `${s.userAgent.browser}/${s.userAgent.os}` }} />
+                              <InfoRow data={{ name: 'timezone/city', value: `${s.stats.timezone}/${s.stats.city}` }} />
+                              <InfoRow data={{ name: 'visit', value: moment(s.timestamp).format() }} />
+                           </div>
+                           <hr />
+                        </div>
+                     })
+                     : <h4>no stats yet</h4>
+               }
+            </div>
+            <div className="Stats__container__feedback">
+               {
+                  feedbacks.length
+                     ? feedbacks.map(f => {
+                        return <div key={f._id}>
+                           <div>
+                              <InfoRow data={{ name: 'rate', value: f.rate }} />
+                              <InfoRow data={{ name: 'comment', value: f.comment }} />
+                           </div>
+                           <hr />
+                        </div>
+                     })
+                     : <h4>no feedbacks yet</h4>
+               }
+            </div>
+         </div>
+
       </div>
    )
 }

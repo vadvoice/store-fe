@@ -11,6 +11,7 @@ import adminAPi from '../../api/adminApi';
 import authApi from '../../api/authApi';
 import orderApi from '../../api/orderApi';
 import statsApi from '../../api/statsApi';
+import feedbackApi from '../../api/feedbackApi';
 
 const links = [{
    title: 'Products',
@@ -29,6 +30,7 @@ class Admin extends Component {
       products: [],
       orders: [],
       stats: [],
+      feedbacks: [],
    
       isDataLoading: false,
       isAccessAllowed: false
@@ -145,14 +147,16 @@ class Admin extends Component {
          isDataLoading: true
       })
       const stats = await statsApi.stats();
+      const feedbacks = await feedbackApi.list();
       this.setState({
          stats,
+         feedbacks,
          isDataLoading: false
       })
    }
    render() {
       const { match: { path } } = this.props;
-      const { isDataLoading, products, isAccessAllowed, orders, stats } = this.state;
+      const { isDataLoading, products, isAccessAllowed, orders, stats, feedbacks } = this.state;
 
       if (!isAccessAllowed) {
          return <div className="Admin" data-testid="Admin">
@@ -180,7 +184,10 @@ class Admin extends Component {
             <Route exact path={`${path}/stats`} render={props => <Stats
                {...props}
                actions={{ fetchData: this.fetchStats }}
-               stats={stats}
+               data={{
+                  stats,
+                  feedbacks
+               }}
             />} />
 
             <Route path="*" component={NotFound} />

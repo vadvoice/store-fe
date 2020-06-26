@@ -1,0 +1,12 @@
+.Stats {
+   &__container {
+      display: flex;
+      &__stats {
+         margin-right: 20px;
+         flex: 1;
+      }
+      &__feedback {
+         flex: 1;
+      }
+   }
+}

@@ -17,7 +17,7 @@ import { constants } from '../../config';
 import './Cart.scss';
 
 const Cart = (props) => {
-   const [ isCheckoutVisible, setIsCheckoutVisible] = useState(false);
+   const [ isCheckoutVisible, setIsCheckoutVisible ] = useState(false);
    const { cartProducts, actions } = props;
    const cartPriceAmount = cartProducts.reduce((acc, p) => acc + p.amount, 0);
 
@@ -67,12 +67,21 @@ const Cart = (props) => {
                      label={constants.common.fields.comment}
                      component={TextInput}
                   />
-                  <Button
-                     submit
-                     primary
-                     disabled={submitting}
-                     label={constants.common.fields.submit}
-                  />
+                  <div className="Cart__checkout__actions">
+                     <Button
+                        success
+                        submit
+                        primary
+                        disabled={submitting}
+                        label={constants.common.actions.submit}
+                     />
+                     <Button
+                        primary
+                        disabled={submitting}
+                        label={constants.common.actions.cancel}
+                        onClick={_ => setIsCheckoutVisible(false)}
+                     />
+                  </div>
                </form>
             )}
          />
@@ -96,7 +105,7 @@ const Cart = (props) => {
             </div>
          </div>
          <div className="Cart__checkout">
-            {!isCheckoutVisible ? <Button label={constants.common.fields.checkout} onClick={() => setIsCheckoutVisible(true)} /> : null}
+            {!isCheckoutVisible ? <Button info label={constants.common.fields.checkout} onClick={() => setIsCheckoutVisible(true)} /> : null}
             {isCheckoutVisible ? renderCheckoutForm() : null}
          </div>
       </div>

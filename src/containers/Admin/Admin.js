@@ -70,8 +70,15 @@ class Admin extends Component {
          isDataLoading: false
       })
    }
+
+   // order actions
    resolveOrder = async (id) => {
       await orderApi.resolve(id);
+      await this.fetchActiveOrders();
+   }
+
+   rejectOrder = async (id) => {
+      await orderApi.reject(id);
       await this.fetchActiveOrders();
    }
 
@@ -177,7 +184,7 @@ class Admin extends Component {
             />} />
             <Route exact path={`${path}/orders`} render={props => <Orders
                {...props}
-               actions={{ fetchData: this.fetchActiveOrders, resolveOrder: this.resolveOrder }}
+               actions={{ fetchData: this.fetchActiveOrders, resolveOrder: this.resolveOrder, rejectOrder: this.rejectOrder }}
                orders={orders}
             />} />
 

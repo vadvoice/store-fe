@@ -30,7 +30,8 @@ const constants = {
       soldOut: 'Sold Out'
    },
    order: {
-      resolved: 'resolved'
+      resolved: 'resolved',
+      rejected: 'rejected'
    },
    about: {
       title: 'Vadym Shevchenko',
@@ -45,7 +46,10 @@ const constants = {
    common: {
       actions: {
          resolve: 'resolve',
-         send: 'send'
+         reject: 'reject',
+         send: 'send',
+         cancel: 'cancel',
+         submit: 'submit',
       },
       fields: {
          email: 'Email',

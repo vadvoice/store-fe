@@ -7,8 +7,20 @@ import './OrderItem.scss'
 import { StatusLabel } from '../../Common';
 
 const OrderItem = (props) => {
-   const { order } = props;
+   const { order, actions } = props;
 
+   const renderActions = () => {
+      if (order.status === 0) {
+         return <>
+            <Button success label={constants.common.actions.resolve} onClick={() => actions.resolveOrder(order._id)}/>
+            <Button danger label={constants.common.actions.reject} onClick={() => actions.rejectOrder(order._id)}/>
+         </>
+      } else if (order.status === 1) {
+         return <StatusLabel>{constants.order.resolved}</StatusLabel> 
+      } else if (order.status === 2) {
+         return <StatusLabel>{constants.order.rejected}</StatusLabel> 
+      }
+   }
    return (
       <div className="OrderItem">
          <h1>{order.amount} {order.currency}</h1>
@@ -19,7 +31,7 @@ const OrderItem = (props) => {
                <img src={prod.imageUrl} alt={prod.title} />
             </div>)}
          </div>
-         {order.status === 0 ? <Button label={constants.common.actions.resolve} onClick={() => props.resolve(order._id)}/> : <StatusLabel>{constants.order.resolved}</StatusLabel> }
+         {renderActions()}
       </div>
    )
 }

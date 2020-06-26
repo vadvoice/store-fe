@@ -17,5 +17,11 @@ export default {
          url: `${baseUrl}/resolve/${id}`,
          method: REQUEST_METHODS.post,
       })
-   }
+   },
+   reject: (id) => {
+      return api.request({
+         url: `${baseUrl}/reject/${id}`,
+         method: REQUEST_METHODS.post,
+      })
+   },
 }

@@ -15,6 +15,13 @@
             flex: 1;
          }
       }
+      &__actions {
+         display: flex;
+         justify-content: center;
+         button:first-child {
+            margin-right: $margin;
+         }
+      }
    }
    &__total {
       p {

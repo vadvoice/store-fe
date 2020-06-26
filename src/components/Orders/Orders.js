@@ -15,7 +15,7 @@ const Orders = (props) => {
       <div className="Orders">
          {
             orders.length
-            ? orders.map(order => <OrderItem key={order._id} order={order} resolve={props.actions.resolveOrder} />)
+            ? orders.map(order => <OrderItem key={order._id} order={order} actions={props.actions} />)
             : <h4>not orders yet</h4>
          }
       </div>

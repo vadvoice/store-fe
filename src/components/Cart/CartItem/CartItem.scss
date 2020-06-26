@@ -1,4 +1,5 @@
 @import '../../../assets/styles/Variables';
+@import '../../../assets/styles/Responsive';
 
 .CartItem {
    $img-size: 60px;
@@ -9,22 +10,53 @@
    transition: all .3s;
    padding: $padding $margin;
    margin-bottom: $margin;
-   h2 {
-      margin: 0;
+
+   &__content {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      h2 {
+         margin: 0;
+      }
+      img {
+         width: $img-size;
+         height: $img-size;
+         object-fit: cover;
+         border-radius: $border-radius;
+      }
    }
+   
    &:hover {
       box-shadow: $box-shadow;
-   }
-   img {
-      width: $img-size;
-      height: $img-size;
-      object-fit: cover;
-      border-radius: $border-radius;
    }
    &__info {
       flex: 1;
    }
    &__price {
       flex-basis: 20%;
+      color: $accent-text;
+      font-size: x-large;
+   }
+
+   @include below($tablet) {
+      flex-direction: column;
+      &__content {
+         flex-direction: column;
+         img {
+            width: 100%;
+            height: 150px;
+         }
+      }
+      &__info {
+         margin-top: $margin;
+         align-self: flex-start;
+      }
+      &__price {
+         align-self: flex-end;
+      }
+      &__actions {
+         margin-top: $margin;
+         align-self: flex-end;
+      }
    }
 }

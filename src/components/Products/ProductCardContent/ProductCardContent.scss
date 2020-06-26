@@ -36,5 +36,8 @@
    }
    @include below($tablet) {
       flex-direction: column;
+      &__preview {
+         margin-right: 0;
+      }
    }
 }

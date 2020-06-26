@@ -27,15 +27,6 @@
       flex: 1;
     }
   }
-  @media (prefers-color-scheme: dark) {
-    background: $secondary-color;
-    color: $secondary-text;
-  }
-
-  @media (prefers-color-scheme: light) {
-    background: $primary-color;
-    color: $primary-text;
-  }
 
   @media only screen and (max-width: 900px) {
     .container {

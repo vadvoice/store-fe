@@ -18,7 +18,7 @@
    img {
       width: $img-size;
       height: $img-size;
-      object-fit: contain;
+      object-fit: cover;
       border-radius: $border-radius;
    }
    &__info {

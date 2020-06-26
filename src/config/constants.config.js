@@ -34,11 +34,18 @@ const constants = {
    },
    about: {
       title: 'Vadym Shevchenko',
-      subTitle: 'developer & artist'
+      subTitle: 'developer & artist',
+   },
+   feedback: {
+      commentLabel: 'What do you think?',
+      leaveUsFeedBack: 'Leave us feedback 😊',
+      thankYou: 'Thank you 😊',
+      feedbackSent: 'Your feedback was sent successfully'
    },
    common: {
       actions: {
-         resolve: 'resolve'
+         resolve: 'resolve',
+         send: 'send'
       },
       fields: {
          email: 'Email',

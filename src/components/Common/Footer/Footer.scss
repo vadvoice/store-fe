@@ -3,4 +3,6 @@
 .Footer {
   padding: $margin;
   color: inherit;
+  position: relative;
+  z-index: $z-accent;
 }

@@ -12,6 +12,7 @@
    transform: translate(-80%, 0);
    transition: all .3s;
    color: $dominant-text;
+   z-index: 1;
    &--visible {
       transform: translate(0%, 0);
       #{$self} {

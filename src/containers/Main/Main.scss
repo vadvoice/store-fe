@@ -17,7 +17,8 @@
   align-items: center;
   flex: 1;
   position: relative;
-  color: white;
+  z-index: 1;
+  color: $dominant-text;
 
   .Main__title {
     font-family: Osaka, Meiryo, "MS PGothic", sans-serif;

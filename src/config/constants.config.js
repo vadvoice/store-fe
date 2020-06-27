@@ -4,7 +4,8 @@ const constants = {
       github: 'https://github.com/vadvoice',
       linkedin: 'https://www.linkedin.com/in/vadym-shevchenko-92614a134/',
       facebook: 'https://www.facebook.com/ezio.guilty.9/',
-      instagram: 'https://www.instagram.com/fury_grace/'
+      instagram: 'https://www.instagram.com/fury_grace/',
+      donate: 'https://send.monobank.ua/5tuELBgFoo'
    },
    navigation: {
       store: 'store',
@@ -36,6 +37,7 @@ const constants = {
    about: {
       title: 'Vadym Shevchenko',
       subTitle: 'developer & artist',
+      donateTitle: 'donate'
    },
    feedback: {
       commentLabel: 'What do you think?',

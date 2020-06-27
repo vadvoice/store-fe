@@ -19,7 +19,8 @@ const About = (props) => {
          <p>{constants.about.subTitle}</p>
       </div>
       <div className="About__footer">
-         <Button label={constants.navigation.explore} onClick={() => history.push('/store') } />
+         <Button info label={constants.navigation.explore} onClick={() => history.push('/store') } />
+         <Button label={constants.about.donateTitle} onClick={() => window.open(constants.links.donate, '_blank') } />
       </div>
    </div>
 }

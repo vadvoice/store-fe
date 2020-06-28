@@ -1,0 +1,16 @@
+.EditQuote {
+   &__view {
+      display: flex;
+      align-items: center;
+      h4 {
+         flex: 1;
+      }
+   }
+   &__form {
+      display: flex;
+      align-items: center;
+      &__fields {
+         flex: 1;
+      }
+   }
+}

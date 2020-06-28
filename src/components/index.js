@@ -6,3 +6,5 @@ export * from './Cart/Cart';
 export * from './Orders/Orders';
 export * from './Stats/Stats';
 export * from './Feedback/Feedback';
+export * from './Quotes/Quotes';
+export * from './QuotesGenerator/QuotesGenerator';

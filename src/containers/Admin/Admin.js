@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { Routing, NotFound, Loader } from '../../components/Common';
-import { ProductEditor, AuthLogin, Orders, Stats } from '../../components';
+import { ProductEditor, AuthLogin, Orders, Stats, Quotes } from '../../components';
 import iziToast from 'izitoast';
 
 import './Admin.scss';
@@ -12,6 +12,7 @@ import authApi from '../../api/authApi';
 import orderApi from '../../api/orderApi';
 import statsApi from '../../api/statsApi';
 import feedbackApi from '../../api/feedbackApi';
+import quotesApi from '../../api/quotesApi';
 
 const links = [{
    title: 'Products',
@@ -20,6 +21,9 @@ const links = [{
 }, {
    title: 'Orders',
    link: 'orders'
+}, {
+   title: 'quotes',
+   link: 'quotes'
 }, {
    title: 'Stats',
    link: 'stats'
@@ -31,6 +35,7 @@ class Admin extends Component {
       orders: [],
       stats: [],
       feedbacks: [],
+      quotes: [],
    
       isDataLoading: false,
       isAccessAllowed: false
@@ -161,9 +166,29 @@ class Admin extends Component {
          isDataLoading: false
       })
    }
+   // quotes
+   fetchQuotes = async () => {
+      this.setState({
+         isDataLoading: true
+      })
+      const quotes = await quotesApi.list();
+      this.setState({
+         quotes,
+         isDataLoading: false
+      })
+   }
+   submitQuote = async (data) => {
+      await quotesApi.create(data);
+      this.fetchQuotes();
+   }
+   deleteQuote = async (id) => {
+      await quotesApi.delete(id);
+      this.fetchQuotes();
+   }
+
    render() {
       const { match: { path } } = this.props;
-      const { isDataLoading, products, isAccessAllowed, orders, stats, feedbacks } = this.state;
+      const { isDataLoading, products, isAccessAllowed, orders, stats, feedbacks, quotes } = this.state;
 
       if (!isAccessAllowed) {
          return <div className="Admin" data-testid="Admin">
@@ -186,6 +211,11 @@ class Admin extends Component {
                {...props}
                actions={{ fetchData: this.fetchActiveOrders, resolveOrder: this.resolveOrder, rejectOrder: this.rejectOrder }}
                orders={orders}
+            />} />
+            <Route exact path={`${path}/quotes`} render={props => <Quotes
+               {...props}
+               actions={{ fetchData: this.fetchQuotes, submitQuote: this.submitQuote, deleteQuote: this.deleteQuote }}
+               data={{ quotes }}
             />} />
 
             <Route exact path={`${path}/stats`} render={props => <Stats

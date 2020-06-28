@@ -2,14 +2,18 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import { constants } from '../../config/constants.config';
 
-import { Button } from '../../components/Common';
 import statsApi from '../../api/statsApi';
 
+import { Button } from '../../components/Common';
+import { QuotesGenerator } from '../../components';
+
 import './Main.scss';
+import quotesApi from '../../api/quotesApi';
 
 class Main extends Component {
   state = {
-    isLoaded: false
+    isLoaded: false,
+    quotes: []
   }
   componentDidMount() {
     setTimeout(() => {
@@ -37,11 +41,20 @@ class Main extends Component {
     this.props.history.push('/store')
   }
 
+  // quotes
+  fetchQuotes = async () => {
+    const quotes = await quotesApi.list();
+    this.setState({
+      quotes
+    })
+  }
+
   render() {
     return <div className={classNames({
       'Main': true,
       'Main--loading': !this.state.isLoaded
     })}>
+      <QuotesGenerator data={{ quotes: this.state.quotes }} actions={{ fetchData: this.fetchQuotes }}/>
       <h1 className="Main__title ripple">
         {constants.main.title}
       </h1>

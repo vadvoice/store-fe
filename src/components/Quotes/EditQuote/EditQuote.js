@@ -7,7 +7,7 @@ import { Button } from '../../../components/Common';
 import './EditQuote.scss';
 
 const EditQuote = (props) => {
-   const { quote, submit, isEditing } = props;
+   const { quote, submit, deleteQuote, isEditing } = props;
 
    const [isEditingMode, setIsEditingMode] = useState(isEditing);
 
@@ -36,6 +36,13 @@ const EditQuote = (props) => {
                         component={TextInput}
                         validate={required}
                      />
+                     <FormField
+                        disabled={submitting}
+                        name={'author'}
+                        placeholder={'author'}
+                        label={'author'}
+                        component={TextInput}
+                     />
                   </div>
 
                   <div className="EditingСard__form__actions">
@@ -61,6 +68,7 @@ const EditQuote = (props) => {
       <div className="EditQuote__view" >
          <h4>{quote.text || '"create quote"'}</h4>
          <Button label={'edit'} onClick={_ => setIsEditingMode(true)} />
+         <Button danger label={'delete'} onClick={_ => deleteQuote(quote._id)} />
       </div>
    </div>
 }

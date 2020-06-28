@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-
+import TextTransition, { presets } from "react-text-transition";
 import './QuotesGenerator.scss';
 
 const QuotesGenerator = (props) => {
    const { data: { quotes }, actions: { fetchData } } = props;
-   const [activeQuote, setActiveQuote] = useState(quotes && quotes.length && quotes[0].text);
+   const [activeQuote, setActiveQuote] = useState(null);
 
    useEffect(() => {
       fetchData();
@@ -21,11 +21,11 @@ const QuotesGenerator = (props) => {
 
    return (
       <div className="QuotesGenerator">
-         {
-            activeQuote
-               ? <h4>{activeQuote.text}</h4>
-               : null
-         }
+         <TextTransition
+            text={ activeQuote ? activeQuote.text : '' }
+            springConfig={ presets.wobbly }
+         />
+         <i>{ activeQuote ? `- ${activeQuote.author}` : '' }</i>
       </div>
    )
 }

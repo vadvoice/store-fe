@@ -4,7 +4,7 @@ import './Quotes.scss';
 import { EditQuote } from './EditQuote/EditQuote';
 
 const Quotes = (props) => {
-   const { data: { quotes }, actions: { fetchData, submitQuote } } = props;
+   const { data: { quotes }, actions: { fetchData, submitQuote, deleteQuote } } = props;
 
    useEffect(() => {
       fetchData()
@@ -16,7 +16,7 @@ const Quotes = (props) => {
         <EditQuote isEditing={true} quote={{}} submit={submitQuote} />
         <ol>
            {quotes.map(q => <li key={q._id}>
-               <EditQuote quote={q} submit={submitQuote} />
+               <EditQuote quote={q} submit={submitQuote} deleteQuote={deleteQuote} />
             </li>)}
         </ol>
       </div>

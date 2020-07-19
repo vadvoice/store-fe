@@ -10,6 +10,11 @@ import App from './App/App';
 import './index.scss';
 // notifyer styles
 import 'izitoast/dist/css/iziToast.min.css';
+import { constants } from './config';
+
+if (document.title) {
+  document.title = constants.main.title;
+}
 
 ReactDOM.render(
   <BrowserRouter>

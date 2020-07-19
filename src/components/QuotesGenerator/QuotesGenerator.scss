@@ -4,6 +4,7 @@
    display: flex;
    flex-direction: column;
    max-width: $container;
+   min-height: 100px;
    i {
       display: inline-block;
       text-align: end;

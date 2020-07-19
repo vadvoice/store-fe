@@ -17,7 +17,7 @@ const constants = {
       explore: 'explore'
    },
    main: {
-      title: '(V)ision',
+      title: 'Vizion Arts',
       explore: 'explore'
    },
    cart: {

@@ -58,7 +58,7 @@ class Main extends Component {
       <h1 className="Main__title ripple">
         {constants.main.title}
       </h1>
-      <Button className={'Main__redirect'} onClick={this.redirectToStore} label={constants.main.explore}/>
+      <Button info className={'Main__redirect'} onClick={this.redirectToStore} label={constants.main.explore}/>
     </div>
   }
 }

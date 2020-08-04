@@ -23,7 +23,7 @@ const Stats = (props) => {
                            <div>
                               <h4>{s.ip}</h4>
                               <InfoRow data={{ name: 'browser/os', value: `${s.userAgent.browser}/${s.userAgent.os}` }} />
-                              <InfoRow data={{ name: 'timezone/city', value: `${s.stats.timezone}/${s.stats.city}` }} />
+                              <InfoRow data={{ name: 'timezone/city', value: `${s.stats && s.stats.timezone}/${s.stats && s.stats.city}` }} />
                               <InfoRow data={{ name: 'visit', value: moment(s.timestamp).format() }} />
                            </div>
                            <hr />

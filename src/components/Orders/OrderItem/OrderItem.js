@@ -5,6 +5,7 @@ import { constants } from '../../../config';
 
 import './OrderItem.scss'
 import { StatusLabel } from '../../Common';
+import InfoRow from '../../Common/InfoRow/InfoRow';
 
 const OrderItem = (props) => {
    const { order, actions } = props;
@@ -25,6 +26,8 @@ const OrderItem = (props) => {
       <div className="OrderItem">
          <h1>{order.amount} {order.currency}</h1>
          {moment(order.createdAt).format('ll')}
+         <InfoRow data={{ name: 'name', value: order.from }} />
+         <InfoRow data={{ name: 'email', value: order.email }} />
          <div className="OrderItem__products">
             {order.products.map(prod => <div key={prod._id} className="OrderItem__products__product">
                <h3>{prod.title}</h3>

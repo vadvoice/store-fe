@@ -44,6 +44,12 @@ export default {
       method: REQUEST_METHODS.get,
     })
   },
+  rawList: () => {
+    return api.request({
+      url: `${baseUrl}/raw`,
+      method: REQUEST_METHODS.get,
+    })
+  },
   delete: (productId) => {
     return api.request({
       url: `${baseUrl}/${productId}`,
@@ -62,6 +68,13 @@ export default {
       method: REQUEST_METHODS.update,
       data: convertObjectToFormData(data),
       headers: {'Content-Type': 'multipart/form-data' }
+    })
+  },
+  mark: (productId, data) => {
+    return api.request({
+      url: `${baseUrl}/${productId}/mark`,
+      method: REQUEST_METHODS.post,
+      data: data
     })
   },
 };

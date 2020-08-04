@@ -8,7 +8,7 @@ import { AiOutlineCloseCircle } from 'react-icons/ai';
 import './EditingСard.scss';
 
 function EditingСard(props) {
-   const { product: { _id, imageUrl, title, description, amount }, actions: { onSubmit, onDelete, onGalleryItemDelete }, isEdit } = props;
+   const { product: { _id, imageUrl, title, description, amount, mark }, actions: { onSubmit, onDelete, markProduct, onGalleryItemDelete }, isEdit } = props;
 
    const [isEditingMode, setIsEditingMode] = useState(isEdit);
 
@@ -31,6 +31,16 @@ function EditingСard(props) {
                      danger
                   />
                   : null
+            }
+            {
+               markProduct
+               ? <Button
+                  label={mark === 0 ? 'deactivate' : 'activate'}
+                  onClick={() => markProduct(_id, mark === 0 ? 1 : 0 )}
+                  danger={mark === 0}
+                  success={mark > 0}
+               />
+               : null
             }
          </div>
       </div>

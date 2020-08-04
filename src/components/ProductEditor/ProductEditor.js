@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { EditingСard } from './EditingСard/EditingСard';
 import { Button } from '../Common/Button/Button';
 
@@ -6,7 +6,11 @@ import './ProductEditor.scss'
 
 const ProductEditor = (props) => {
    const [isNewCardAdding, setIsNewCardEdding] = useState(false);
-   const { onGalleryItemDelete } = props.actions;
+   const { fetchData, onGalleryItemDelete } = props.actions;
+
+   useEffect(() => {
+      fetchData();
+   }, [fetchData])
 
    const onSubmit = async (values) => {
       props.actions.sendProductData(values);
@@ -15,6 +19,10 @@ const ProductEditor = (props) => {
 
    const deleteProduct = (id) => {
       props.actions.deleteProduct(id);
+   }
+
+   const markProduct = (id, mark) => {
+      props.actions.markProduct(id, mark);
    }
    const { products } = props;
    return (
@@ -25,7 +33,7 @@ const ProductEditor = (props) => {
          </div>
 
          <div className="ProductEditor__cards">
-            {products.map(product => <EditingСard key={product.title} product={product} actions={{ onSubmit, onDelete: deleteProduct, onGalleryItemDelete: onGalleryItemDelete }} />)}
+            {products.map(product => <EditingСard key={product.title} product={product} actions={{ onSubmit, onDelete: deleteProduct, markProduct,onGalleryItemDelete: onGalleryItemDelete }} />)}
          </div>
       </div>
    )

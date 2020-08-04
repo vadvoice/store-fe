@@ -43,8 +43,7 @@ class Admin extends Component {
    async componentDidMount() {
       try {
          await adminAPi.isAdmin();
-         await this.fetchProducts();
-      
+
          this.setState({
             isAccessAllowed: true
          })
@@ -92,7 +91,7 @@ class Admin extends Component {
       this.setState({
          isDataLoading: true
       })
-      const products = await productApi.list();
+      const products = await productApi.rawList();
       this.setState({
          products,
          isDataLoading: false
@@ -135,7 +134,24 @@ class Admin extends Component {
          })
       }
    }
+   markProduct = async (productId, mark) => {
+      this.setState({
+         isDataLoading: true
+      })
+      try {
+         const removedProduct = await productApi.mark(productId, { mark });
+         await this.fetchProducts();
+         iziToast.success({
+            message: `${removedProduct._id} updated`
+         })
+      } finally {
+         this.setState({
+            isDataLoading: false
+         })
+      }
+   }
 
+   // azure storage API
    onGalleryItemDelete = async (productId, galleryItemId) => {
       this.setState({
          isDataLoading: true
@@ -204,7 +220,7 @@ class Admin extends Component {
          <Switch>
             <Route exact path={`${path}`} render={props => <ProductEditor
                {...props}
-               actions={{ fetchData: this.fetchProducts, sendProductData: this.sendProductData, deleteProduct: this.deleteProduct, onGalleryItemDelete: this.onGalleryItemDelete }}
+               actions={{ fetchData: this.fetchProducts, sendProductData: this.sendProductData, deleteProduct: this.deleteProduct, onGalleryItemDelete: this.onGalleryItemDelete, markProduct: this.markProduct }}
                products={products}
             />} />
             <Route exact path={`${path}/orders`} render={props => <Orders

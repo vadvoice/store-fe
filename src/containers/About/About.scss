@@ -32,6 +32,9 @@
       flex-direction: column;
       color: white;
       text-align: end;
+      p {
+         text-transform: capitalize;
+      }
    }
    &__footer {
       position: absolute;

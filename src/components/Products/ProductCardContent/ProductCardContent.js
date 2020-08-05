@@ -19,12 +19,13 @@ const ProductCardContent = (props) => {
             <ImageGallery images={[{name: title, url: imageUrl},...gallery]} />
          </div>
          <div className="ProductCardContent__content">
-            <header>
-               <h3>
-                  {title}
-               </h3>
-            </header>
             <PriceTag product={product} />
+            <br />
+            <header>
+               <h2>
+                  {title}
+               </h2>
+            </header>
             <div className="ProductCardContent__content__description">
                <p>{description}</p>
             </div>

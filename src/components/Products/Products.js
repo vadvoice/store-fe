@@ -34,7 +34,7 @@ const Products = (props) => {
          <Modal
             onClose={requestClose}
             isModalOpen={isModalOpen}
-            header="view"
+            header={`${selectedProduct && selectedProduct.title}`}
          >
             <ProductCardContent product={selectedProduct} actions={{...actions}} cartProducts={cartProducts} />
          </Modal>

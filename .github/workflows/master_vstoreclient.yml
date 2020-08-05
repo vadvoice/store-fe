@@ -31,4 +31,4 @@ jobs:
         app-name: 'vstoreclient'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_3689368dd3c047aa8266d355c87227bc }}
-        package: ./build
+        package: build

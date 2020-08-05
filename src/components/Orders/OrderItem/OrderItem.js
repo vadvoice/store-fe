@@ -28,6 +28,7 @@ const OrderItem = (props) => {
          {moment(order.createdAt).format('ll')}
          <InfoRow data={{ name: 'name', value: order.from }} />
          <InfoRow data={{ name: 'email', value: order.email }} />
+         <InfoRow data={{ name: 'phone', value: order.phone }} />
          <div className="OrderItem__products">
             {order.products.map(prod => <div key={prod._id} className="OrderItem__products__product">
                <h3>{prod.title}</h3>

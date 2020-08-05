@@ -8,11 +8,12 @@ import { Button } from '../../components/Common/Button/Button';
 
 const About = (props) => {
    const { history } = props;
+
    return <div className={classNames({
       'About': true,
    })}>
       <div className="About__background">
-         <video src={AboutVideoBackground} autoPlay loop playsinline />
+         <video src={AboutVideoBackground} autoPlay loop webkit-playsinline="true" />
       </div>
       <div className="About__content">
          <h1>{constants.about.title}</h1>

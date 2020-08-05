@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import classNames from 'classnames';
 import { PriceTag } from '../PriceTag/PriceTag';
+import { useWindowWidth } from '@react-hook/window-size';
 
 import './ProductCard.scss';
 
@@ -16,6 +17,7 @@ const ProductCard = (props) => {
    });
    const [mouseLeaveDelay, setMouseLeaveDelay] = useState(0);
    const [isVisible, setIsVisible] = useState(false);
+   const screenWidth = useWindowWidth();
 
    useEffect(() => {
       const { offsetWidth, offsetHeight } = cardRef.current;
@@ -53,6 +55,8 @@ const ProductCard = (props) => {
          backgroundImage: `url(${props.product.imageUrl})`
       }
    }
+
+   // DESKTOP hover handler
    const handleMouseMove = (e) => {
       const { offsetLeft, offsetTop } = cardRef.current;
       const mouseX = e.pageX - offsetLeft - size.width / 2;
@@ -77,16 +81,63 @@ const ProductCard = (props) => {
       }, 1000))
    }
 
+   // MOBILE: touch handlers
+   const handleTouchMove = (e) => {
+      const touch = e.touches[0];
+
+      const { offsetLeft, offsetTop } = cardRef.current;
+      if (touch.pageX < offsetLeft || touch.pageY < offsetTop) {
+         return;
+      }
+      const mouseX = touch.pageX - offsetLeft - size.width / 2;
+      const mouseY = touch.pageY - offsetTop - size.height / 2;
+
+      setCoors({
+         mouseX,
+         mouseY
+      })
+   }
+   const handleTouchStart = (e) => {
+      if (mouseLeaveDelay) {
+         clearTimeout(mouseLeaveDelay);
+      }
+   }
+   const handleTouchEnd = () => {
+      setMouseLeaveDelay( setTimeout(() => {
+         setCoors({
+            mouseX: 0,
+            mouseY: 0
+         })
+      }, 1000))
+   }
+
    const { product: { title, description, _id }, actions: { selectProduct } } = props;
+   let cardParams = {};
+
+   if (screenWidth < 600) {
+      // mobile card events handlers
+      cardParams = {
+         ...cardParams,
+         onTouchMove: handleTouchMove,
+         onTouchStart: handleTouchStart,
+         onTouchEnd: handleTouchEnd
+      }
+   } else {
+      // desktop card events handlers
+      cardParams = {
+         ...cardParams,
+         onMouseMove: handleMouseMove,
+         onMouseEnter: handleMouseEnter,
+         onMouseLeave: handleMouseLeave
+      }
+   }
 
    return (
       <div className={classNames({
          'ProductCard': true,
          'ProductCard--visible': isVisible
       })}
-         onMouseMove={handleMouseMove}
-         onMouseEnter={handleMouseEnter}
-         onMouseLeave={handleMouseLeave}
+         {...cardParams}
          ref={cardRef}
          onClick={_ => {
             selectProduct(_id)

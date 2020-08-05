@@ -21,14 +21,20 @@ class HomeContainer extends Component {
     products: []
   }
   fetchProducts = async () => {
-    this.setState({
-      isDataLoading: true
-    })
-    const products = await productApi.list();
-    this.setState({
-      products,
-      isDataLoading: false
-    })
+    try {
+      this.setState({
+        isDataLoading: true
+      })
+      const products = await productApi.list();
+      this.setState({
+        products,
+        isDataLoading: false
+      })
+    } finally {
+      this.setState({
+        isDataLoading: false
+      })
+    }
   }
   onCheckout = async (values) => {
     const { cartProducts, cartActions } = this.props;

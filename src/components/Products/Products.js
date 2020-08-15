@@ -28,7 +28,7 @@ const Products = (props) => {
    return (
       <div className="Products">
          <div className="Products__content">
-            {props.products.map((product, idx) => <ProductCard index={idx} key={product.title} product={product} actions={{ selectProduct, ...actions }} cartProducts={cartProducts} />)}
+            {props.products.length ? props.products.map((product, idx) => <ProductCard index={idx} key={product.title} product={product} actions={{ selectProduct, ...actions }} cartProducts={cartProducts} />) : 'no products yet'}
          </div>
 
          <Modal

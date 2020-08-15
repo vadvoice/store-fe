@@ -1,4 +1,5 @@
 @import '../../../assets/styles/Variables';
+@import '../../../assets/styles/Responsive';
 
 .ImageGallery {
    border-radius: $border-radius;
@@ -47,4 +48,9 @@
       }
    }
 
+   @include below($mobile) {
+      &__container {
+         height: 250px;
+      }
+   }
 }

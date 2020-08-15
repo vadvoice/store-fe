@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Form } from 'react-final-form';
-import { TextInput, ImageInput, FormField, NumberInput } from '../../../components/Inputs';
+import { TextInput, ImageInput, FormField, NumberInput, CheckboxInput } from '../../../components/Inputs';
 import { Button } from '../../../components/Common';
 import { required } from '../../../components/Inputs/Validators';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 
 import './EditingСard.scss';
+import { PriceTag } from '../../Products/PriceTag/PriceTag';
 
 function EditingСard(props) {
    const { product: { _id, imageUrl, title, description, amount, mark }, actions: { onSubmit, onDelete, markProduct, onGalleryItemDelete }, isEdit } = props;
@@ -34,13 +35,13 @@ function EditingСard(props) {
             }
             {
                markProduct
-               ? <Button
-                  label={mark === 0 ? 'deactivate' : 'activate'}
-                  onClick={() => markProduct(_id, mark === 0 ? 1 : 0 )}
-                  danger={mark === 0}
-                  success={mark > 0}
-               />
-               : null
+                  ? <Button
+                     label={mark === 0 ? 'deactivate' : 'activate'}
+                     onClick={() => markProduct(_id, mark === 0 ? 1 : 0)}
+                     danger={mark === 0}
+                     success={mark > 0}
+                  />
+                  : null
             }
          </div>
       </div>
@@ -82,11 +83,19 @@ function EditingСard(props) {
                   validate={required}
                />
                <FormField
+                  name={'status'}
+                  placeholder={'is bought'}
+                  label={'is bought'}
+                  component={NumberInput}
+                  min="0"
+                  max="1"
+               />
+               <PriceTag product={values} />
+               <FormField
                   name={'description'}
                   placeholder={'description'}
                   label={'description'}
                   component={TextInput}
-                  validate={required}
                />
                <FormField
                   name={'amount'}
@@ -100,7 +109,6 @@ function EditingСard(props) {
                   label={'image'}
                   component={ImageInput}
                />
-
                <FormField
                   name={'gallery'}
                   label={'gallery'}

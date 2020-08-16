@@ -1,7 +1,7 @@
-@import './Animations';
+@import "./Animations";
 
 @mixin shine-animation {
-   @include animation('shine 5s ease-in-out infinite');
+   @include animation("shine 5s ease-in-out infinite");
    animation-fill-mode: forwards;
 
    content: "";
@@ -22,4 +22,4 @@
       rgba(255, 255, 255, 0.5) 92%,
       rgba(255, 255, 255, 0) 100%
    );
- }
+}

@@ -4,6 +4,9 @@
 .ClapEffect {
    margin: $margin 0;
    position: relative;
+   * {
+      user-select: none;
+   }
    /*========================
     SASS definitions
   =======================*/

@@ -1,5 +1,3 @@
-@import "./Variables";
-
 @mixin keyframes($animation-name) {
   @-webkit-keyframes #{$animation-name} {
       @content;
@@ -28,7 +26,7 @@
 
 @keyframes fadein {
   from {bottom: 0; opacity: 0;}
-  to {bottom: $gap; opacity: 1;}
+  to {bottom: 3em; opacity: 1;}
 }
 
 
@@ -198,19 +196,5 @@
 
   40%, 60% {
     transform: translate3d(2px, 0, 0);
-  }
-}
-
-@keyframes shockwave {
-  0% {
-     transform: scale(1);
-     box-shadow: 0 0 2px $secondary-color;
-     opacity: 1;
-  }
-
-  100% {
-     transform: scale(1);
-     opacity: 0;
-     box-shadow: 0 0 50px darken($secondary-color, 20%), inset 0 0 10px $secondary-color;
   }
 }

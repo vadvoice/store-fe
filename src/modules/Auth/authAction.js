@@ -1,6 +1,7 @@
 import {
   LOGIN,
-  LOGOUT
+  LOGOUT,
+  SET_USER
 } from './actionTypes';
 
 const login = auth => ({
@@ -11,8 +12,13 @@ const logout = authID => ({
   type: LOGOUT,
   payload: authID
 });
+const setUser = user => ({
+  type: SET_USER,
+  payload: user
+});
 
 export {
   login,
-  logout
+  logout,
+  setUser
 };

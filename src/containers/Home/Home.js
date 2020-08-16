@@ -14,6 +14,7 @@ import { Products, Cart } from '../../components';
 import { Loader } from '../../components/Common';
 
 import './Home.scss';
+import productVoteApi from '../../api/productVoteApi';
 
 class HomeContainer extends Component {
   state = {
@@ -52,8 +53,13 @@ class HomeContainer extends Component {
       console.error(e);
     }
   }
+
+  makeVote = async (id, data) => {
+    productVoteApi.makeVote(id, {...data, userId: this.props.user.userId});
+  }
+
   render() {
-    const { match: { path }, cartActions, cartProducts } = this.props;
+    const { match: { path }, cartActions, cartProducts, user } = this.props;
     const { isDataLoading, products } = this.state;
 
     return <div className="Home" data-testid="Home">
@@ -65,8 +71,10 @@ class HomeContainer extends Component {
             {...props}
             products={products}
             cartProducts={cartProducts}
+            user={user}
             actions={{
               fetchData: this.fetchProducts,
+              makeVote: this.makeVote,
               ...cartActions
             }}
           />}
@@ -89,8 +97,9 @@ class HomeContainer extends Component {
   }
 }
 
-const mapStateToProps = ({ cart: { cartProducts } }) => ({
-  cartProducts
+const mapStateToProps = ({ cart: { cartProducts }, auth: { user } }) => ({
+  cartProducts,
+  user
 })
 
 const mapActionsToProps = (dispatch) => {

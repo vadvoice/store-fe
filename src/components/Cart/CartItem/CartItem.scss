@@ -21,7 +21,7 @@
       img {
          width: $img-size;
          height: $img-size;
-         object-fit: cover;
+         object-fit: contain;
          border-radius: $border-radius;
       }
    }

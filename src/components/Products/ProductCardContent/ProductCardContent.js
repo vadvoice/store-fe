@@ -1,13 +1,14 @@
 import React from 'react';
 import { PriceTag } from '../PriceTag/PriceTag';
 import { AddToCart } from '../AddToCart/AddToCart';
+import { ClapEffect } from '../ClapEffect/ClapEffect';
 
 import { ImageGallery } from '../../Common';
 
 import './ProductCardContent.scss';
 
 const ProductCardContent = (props) => {
-   const { product, actions, cartProducts } = props;
+   const { product, actions, cartProducts, user } = props;
    if (!product) {
       return <></>;
    }
@@ -30,6 +31,7 @@ const ProductCardContent = (props) => {
                <p>{description}</p>
             </div>
             <div className="ProductCardContent__content__actions">
+               <ClapEffect product={props.product} actions={actions} user={user} />
                {status === 0 ? <AddToCart product={props.product} actions={{ ...actions }} cartProducts={cartProducts} /> : null}
             </div>
          </div>

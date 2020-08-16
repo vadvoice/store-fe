@@ -101,7 +101,7 @@ const Cart = (props) => {
                return <CartItem key={p.title} cartProducts={cartProducts} product={p} actions={actions} />
             })}
             <div className="Cart__total">
-               <p><strong>{cartPriceAmount}</strong> USD</p>
+               <p>{constants.cart.total} <strong>{cartPriceAmount}</strong> USD</p>
             </div>
          </div>
          <div className="Cart__checkout">

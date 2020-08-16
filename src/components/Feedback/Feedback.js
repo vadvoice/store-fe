@@ -129,12 +129,13 @@ function Feedback(props) {
       })
       localStorage.setItem("isFeedbackLeft", 1);
       setShowThanks(true);
-      setTimeout(() => {
-         setIsVisible(false);
-      }, 500)
-      setTimeout(() => {
-         setIsFeedbackAvailable(false);
-      }, 2000)
+
+      setTimeout(() =>  setIsFeedbackAvailable(false), 500)
+   }
+
+   const onCloseFeedback = (e) => {
+      e.preventDefault();
+      setIsVisible(false);
    }
 
    const renderRateContainer = () => {
@@ -209,7 +210,10 @@ function Feedback(props) {
       }>
          {
             showThanks
-               ? <h3 classNames="Feedback__thanks">{constants.feedback.thankYou}</h3> 
+               ? <div>
+                  <h3 classNames="Feedback__thanks">{constants.feedback.thankYou}</h3>
+                  <Button label={'close'} onClick={onCloseFeedback} />
+               </div>
                : <><div className="Feedback__rate-container">
                <h4>{constants.feedback.leaveUsFeedBack}</h4>
                {renderRateContainer()}

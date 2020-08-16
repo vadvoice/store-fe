@@ -7,7 +7,7 @@ import './Products.scss';
 const Products = (props) => {
    const [isModalOpen, setIsModalOpen] = useState(false);
    const [selectedProduct, setSelectedProduct] = useState();
-   const { products, actions, cartProducts } = props;
+   const { products, actions, cartProducts, user } = props;
    const { fetchData } = actions;
 
    useEffect(() => {
@@ -36,7 +36,7 @@ const Products = (props) => {
             isModalOpen={isModalOpen}
             header={`${selectedProduct && selectedProduct.title}`}
          >
-            <ProductCardContent product={selectedProduct} actions={{...actions}} cartProducts={cartProducts} />
+            <ProductCardContent product={selectedProduct} actions={{...actions}} cartProducts={cartProducts} user={user} />
          </Modal>
       </div>
    )

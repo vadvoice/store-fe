@@ -70,8 +70,12 @@
                font-size: large;
                color: $primary-text;
                transition: opacity 0.3s;
+               opacity: 0.8;
                &:hover {
-                  opacity: 0.8;
+                  opacity: 1;
+                  svg {
+                     transform: scale(1.1);
+                  }
                }
                svg {
                   color: $dominant-text;

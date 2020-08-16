@@ -13,7 +13,7 @@ const CartItem = (props) => {
                <p>{description}</p>
             </div>
             <div className="CartItem__price">
-               <strong>{`${amount} ${currency}`}</strong>
+               <strong>{`${amount} ${currency.toUpperCase()}`}</strong>
             </div>
          </div>
          <div className="CartItem__actions">

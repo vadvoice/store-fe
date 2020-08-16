@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Router } from 'react-router-dom';
-import { login } from '../modules/Auth/authAction';
+import { login, setUser } from '../modules/Auth/authAction';
 import history from '../history';
 
 import feedbackApi from '../api/feedbackApi';
@@ -10,23 +10,36 @@ import { WithLayout, FullSizeLayout } from '../HOCs';
 import { constants } from '../config';
 
 import { NotFound } from '../components/Common';
-import { Home, Main, About} from '../containers';
+import { Home, Main, About } from '../containers';
 import { Admin } from '../containers';
 
 import { Feedback } from '../components';
+
+import authApi from '../api/authApi';
+
 import './App.scss';
 
-function App() {
+function App(props) {
+  const { setUser } = props;
   const mode = 'user';
   const onLeaveFeedback = async (data) => {
     await feedbackApi.leaveFeedback(data);
     iziToast.success({
-       message: constants.feedback.feedbackSent
+      message: constants.feedback.feedbackSent
     });
- }
+  }
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const user = await authApi.getUser();
+      setUser(user);
+    }
+    fetchUser();
+  }, [setUser]);
+
   return (
     <Router history={history}>
-      <Feedback actions={{ onLeaveFeedback }}/>
+      <Feedback actions={{ onLeaveFeedback }} />
       <Switch>
         <FullSizeLayout exact path="/" navigationMode={mode} component={Main} />
         <WithLayout path="/store" navigationMode={mode} component={Home} />
@@ -40,13 +53,14 @@ function App() {
   );
 }
 
-
-const mapStateToProps = ({ auth: { profile } }) => ({
-  profile
+const mapStateToProps = ({ auth: { profile, user } }) => ({
+  profile,
+  user
 });
 
 const mapDispatchToProps = dispatch => ({
-  initAuth: authData => dispatch(login(authData))
+  initAuth: authData => dispatch(login(authData)),
+  setUser: user => dispatch(setUser(user))
 });
 
 export default (

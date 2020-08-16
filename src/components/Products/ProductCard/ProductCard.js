@@ -52,7 +52,10 @@ const ProductCard = (props) => {
    }
    const cardBgImage = () => {
       return {
-         backgroundImage: `url(${props.product.imageUrl})`
+         background: `url(${props.product.imageUrl})`,
+         backgroundSize: 'contain',
+         backgroundPosition: 'center',
+         backgroundRepeat: 'no-repeat'
       }
    }
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form } from 'react-final-form';
-import { TextInput, ImageInput, FormField, NumberInput, CheckboxInput } from '../../../components/Inputs';
+import { TextInput, ImageInput, FormField, NumberInput } from '../../../components/Inputs';
 import { Button } from '../../../components/Common';
 import { required } from '../../../components/Inputs/Validators';
 import { AiOutlineCloseCircle } from 'react-icons/ai';

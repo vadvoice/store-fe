@@ -13,4 +13,10 @@ import {
        data
      })
    },
+   getUser: () => {
+    return api.request({
+      url: `${baseUrl}/user`,
+      method: REQUEST_METHODS.get,
+    })
+   }
  }

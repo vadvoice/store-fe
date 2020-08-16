@@ -25,7 +25,8 @@ const constants = {
       successCheckout: 'The order has been successfully created, we will contact you soon',
       productAdded: 'Item added',
       noRecordsYet: 'No records yet',
-      selectedProducts: 'Selected Products'
+      selectedProducts: 'Selected Products',
+      total: 'Total:'
    },
    product: {
       soldOut: 'Sold Out'
@@ -36,8 +37,10 @@ const constants = {
    },
    about: {
       title: 'Vadym Shevchenko',
-      subTitle: 'developer & artist',
-      donateTitle: 'donate'
+      subTitle: 'Software developer & Artist',
+      cooperation: 'Cooperation:',
+      donateTitle: 'donate',
+      email: 'shev4enko.vadym@gmail.com'
    },
    feedback: {
       commentLabel: 'What do you think?',

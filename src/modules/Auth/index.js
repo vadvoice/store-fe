@@ -2,7 +2,8 @@ import Types from './actionTypes';
 
 export const initialAuthState = {
   items: [],
-  profile: {}
+  profile: {},
+  user: {}
 };
 
 const reducer = (state = initialAuthState, action) => {
@@ -19,6 +20,12 @@ const reducer = (state = initialAuthState, action) => {
       return {
         ...state,
         auth: action.payload
+      };
+    }
+    case Types.SET_USER: {
+      return {
+        ...state,
+        user: action.payload
       };
     }
     default:

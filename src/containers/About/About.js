@@ -18,6 +18,7 @@ const About = (props) => {
       <div className="About__content">
          <h1>{constants.about.title}</h1>
          <p>{constants.about.subTitle}</p>
+         <p>{constants.about.cooperation} <a href={`mailto:${constants.about.email}`}>{constants.about.email}</a></p>
       </div>
       <div className="About__footer">
          <Button info label={constants.navigation.explore} onClick={() => history.push('/store') } />

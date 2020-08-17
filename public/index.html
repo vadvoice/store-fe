@@ -4,25 +4,24 @@
 <head>
   <meta charset="utf-8" />
   <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-  <meta 
-     name='viewport' 
-     content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' 
-  />
+  <meta name='viewport' content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <!-- google content indexing -->
   <meta name="keywords"
     content="vizion art, vizion arts, creativity, art for sale, art original,art websites, buy art, buy original art, buy paintings, contemporary abstract art,contemporary art, contemporary arts, contemporary oil paintings, fine art,fine art photography, modern art, modern art paintings, online art gallery">
-    <!-- preview link -->
+  <!-- preview link -->
   <meta property="og:locale" content="en_US" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Vizion Arts | Shevchenko Vadym" />
-  <meta property="og:description" content="Show the world in colors. Find the perfect original paintings, fine art photographs and more directly from the author." />
+  <meta property="og:description"
+    content="Show the world in colors. Find the perfect original paintings, fine art photographs and more directly from the author." />
   <meta property="og:url" content="https://www.vizionart.store/" />
   <meta property="og:site_name" content="Vizion Arts" />
   <meta property="og:image" content="https://vshop.blob.core.windows.net/common/logo_site_preview.png" />
   <!-- twitter block -->
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:description" content="Show the world in colors. Find the perfect original paintings, fine art photographs and more directly from the author." />
+  <meta name="twitter:description"
+    content="Show the world in colors. Find the perfect original paintings, fine art photographs and more directly from the author." />
   <meta name="twitter:title" content="Vizion Arts" />
   <meta name="twitter:site" content="@shev4enko_v" />
   <meta name="twitter:creator" content="@shev4enko_v" />
@@ -56,6 +55,16 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/utils/Draggable.min.js"></script>
   <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ModifiersPlugin-latest-beta.js"></script>
+  <script>
+    window.onload = function () {
+      document.addEventListener('touchmove', function (event) {
+        event = event.originalEvent || event;
+        if (event.scale > 1) {
+          event.preventDefault();
+        }
+      }, false);
+    }
+  </script>
 </body>
 
 </html>

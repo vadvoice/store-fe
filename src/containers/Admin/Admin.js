@@ -194,7 +194,11 @@ class Admin extends Component {
       })
    }
    submitQuote = async (data) => {
-      await quotesApi.create(data);
+      if (data._id) {
+         await quotesApi.update(data._id, data);
+      } else {
+         await quotesApi.create(data);
+      }
       this.fetchQuotes();
    }
    deleteQuote = async (id) => {

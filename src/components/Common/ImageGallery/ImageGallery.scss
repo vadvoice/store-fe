@@ -48,7 +48,7 @@
       }
    }
 
-   @include below($mobile) {
+   @include below($tablet) {
       &__container {
          height: 20vh;
       }

@@ -20,6 +20,13 @@ import {
       data
     })
    },
+   update: (id, data) => {
+    return api.request({
+      url: `${baseUrl}/${id}`,
+      method: REQUEST_METHODS.update,
+      data
+    })
+   },
    delete: (id) => {
       return api.request({
          url: `${baseUrl}/${id}`,

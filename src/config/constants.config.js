@@ -4,7 +4,7 @@ const constants = {
       github: 'https://github.com/vadvoice',
       linkedin: 'https://www.linkedin.com/in/vadym-shevchenko-92614a134/',
       facebook: 'https://www.facebook.com/vadym.shev4enko',
-      instagram: 'https://www.instagram.com/fury_grace/',
+      instagram: 'https://www.instagram.com/shev4enko_vadym/',
       donate: 'https://send.monobank.ua/5tuELBgFoo'
    },
    navigation: {

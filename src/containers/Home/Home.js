@@ -13,8 +13,9 @@ import { NotFound } from '../../components/Common';
 import { Products, Cart } from '../../components';
 import { Loader } from '../../components/Common';
 
-import './Home.scss';
 import productVoteApi from '../../api/productVoteApi';
+
+import './Home.scss';
 
 class HomeContainer extends Component {
   state = {

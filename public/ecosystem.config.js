@@ -1,7 +1,7 @@
 module.exports = {
    apps: [
       {
-         script: "npx serve -s"
+         script: "npx serve -s ./site/wwwroot"
       }
    ]
 };

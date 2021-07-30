@@ -11,7 +11,7 @@ const REQUEST_METHODS = {
 
 const axiosConfig = {
   baseURL,
-  withCredentials: true,
+  // withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
   },

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Switch, Router } from 'react-router-dom';
 import { login, setUser } from '../modules/Auth/authAction';
@@ -15,12 +15,9 @@ import { Admin } from '../containers';
 
 import { Feedback } from '../components';
 
-import authApi from '../api/authApi';
-
 import './App.scss';
 
 function App(props) {
-  const { setUser } = props;
   const mode = 'user';
   const onLeaveFeedback = async (data) => {
     await feedbackApi.leaveFeedback(data);
@@ -28,14 +25,6 @@ function App(props) {
       message: constants.feedback.feedbackSent
     });
   }
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      const user = await authApi.getUser();
-      setUser(user);
-    }
-    fetchUser();
-  }, [setUser]);
 
   return (
     <Router history={history}>

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import { constants } from '../../config/constants.config';
 
-import statsApi from '../../api/statsApi';
-
 import { Button } from '../../components/Common';
 import { QuotesGenerator } from '../../components';
 
@@ -33,8 +31,6 @@ class Main extends Component {
         children[j].style.animationDelay = (j / 10) + 's';
       }
     }
-
-    statsApi.track();
   }
 
   redirectToStore = () => {

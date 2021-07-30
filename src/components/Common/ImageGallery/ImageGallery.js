@@ -53,6 +53,9 @@ class ImageGallery extends React.Component {
                   let className = 'ImageGallery__container__image'
                   if (index === currentIndex) className += ' active';
 
+                  if (url.includes('video')) {
+                     return <video autoPlay loop src={url} className={className} key={`img-${index}`} />;
+                  }
                   return <img src={url} className={className} key={`img-${index}`} alt={name} />;
                })}
             </div>

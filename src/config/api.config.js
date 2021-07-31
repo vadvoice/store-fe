@@ -9,7 +9,7 @@ const detectBaseUrl = () => {
    } else {
       // TODO:
       // backendHost = `${origin.replace('www', 'www.api') || process.env.REACT_APP_BACKEND_HOST}/api` || process.env.BASE_URL || 'http://localhost:5000/api';
-      backendHost = 'https://storeapi-q4u26bdy2-vizionarts.vercel.app/api';
+      backendHost = 'https://storeapi-vizionarts.vercel.app/api';
    }
    return backendHost;
 }

@@ -12,7 +12,7 @@
     "final-form": "^4.20.0",
     "izitoast": "^1.4.0",
     "mo-js": "^0.288.2",
-    "moment": "^2.26.0",
+    "moment": "^2.29.2",
     "node-sass": "^4.14.1",
     "object-to-formdata": "^3.0.9",
     "react": "^16.13.1",

@@ -10,30 +10,40 @@ class ImageInput extends Component {
 
     if (multiple) {
       onChange(e.target.files);
-    }  else {
+    } else {
       const file = e.target.files[0];
       if (file) {
         onChange(file);
       }
     }
-  }
+  };
 
   renderPreview() {
     const { value, multiple } = this.props;
 
-    if ( multiple && value && (value instanceof FileList || Array.isArray(value)) ) {
+    if (
+      multiple &&
+      value &&
+      (value instanceof FileList || Array.isArray(value))
+    ) {
       return <div>{value.length}</div>;
     }
 
     if (value instanceof File) {
       const imageUrl = URL.createObjectURL(value);
-      return <div className="image-input__preview">
-        <img alt={'preview'} src={imageUrl} />
-      </div>;
+      return (
+        <div className="image-input__preview">
+          <img alt={'preview'} src={imageUrl} />
+        </div>
+      );
     }
-    return value && <div className="image-input__preview">
-      <img alt={'preview'} src={value} />
-    </div>;
+    return (
+      value && (
+        <div className="image-input__preview">
+          <img alt={'preview'} src={value} />
+        </div>
+      )
+    );
   }
 
   render() {
@@ -41,9 +51,7 @@ class ImageInput extends Component {
 
     return (
       <div className={classNames(className, 'image-input')}>
-        <div className="image-input__preview">
-          {this.renderPreview()}
-        </div>
+        <div className="image-input__preview">{this.renderPreview()}</div>
         <div className="image-input__change-image">
           <input
             multiple={multiple}
@@ -57,6 +65,6 @@ class ImageInput extends Component {
       </div>
     );
   }
-};
+}
 
 export { ImageInput };

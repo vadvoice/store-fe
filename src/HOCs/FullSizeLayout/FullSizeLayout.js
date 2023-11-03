@@ -4,11 +4,9 @@ import { Footer, AppHeader } from '../../components/Common';
 import '../styles.scss';
 
 const FullSizeLayout = ({
-  component,
   navigationMode = 'guest',
   accessRoles,
   children,
-  ...rest
 }) => {
   const isRouteAccessible =
     !accessRoles || (accessRoles && accessRoles.includes(navigationMode));
@@ -18,11 +16,6 @@ const FullSizeLayout = ({
       <AppHeader fullsize />
       <main id="container" className="container--fullsize">
         {isRouteAccessible && children}
-        {/* {isRouteAccessible ? (
-          <Route {...rest} element={component} />
-        ) : (
-          <Route {...rest} element={NotFound} />
-        )} */}
       </main>
       <Footer />
     </div>

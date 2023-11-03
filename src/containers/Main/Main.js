@@ -33,7 +33,6 @@ const Main = () => {
         children[j].style.animationDelay = j / 10 + 's';
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const redirectToStore = () => {

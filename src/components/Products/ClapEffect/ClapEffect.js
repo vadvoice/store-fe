@@ -95,7 +95,7 @@ class ClapEffect extends React.Component {
 
    _handleClick() {
       this._animationTimeline.replay()
-      this.setState(function (prevState, nextState) {
+      this.setState(function (prevState) {
          return {
             count: Math.min(prevState.count + 1, 50),
             countTotal: prevState.countTotal + 1,

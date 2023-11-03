@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { baseURL } from '../config';
-import iziToast from 'izitoast';
 
 const REQUEST_METHODS = {
   get: 'GET',
@@ -11,6 +10,7 @@ const REQUEST_METHODS = {
 
 const axiosConfig = {
   baseURL,
+  retries: 2,
   // withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
@@ -76,10 +76,12 @@ async function refreshToken() {
 }
 
 function reportProblem(message) {
-  iziToast.error({
-    title: 'Error',
-    message
-  })
+  console.error(message);
+  // TODO: show only success messages
+  // iziToast.error({
+  //   title: 'Error',
+  //   message
+  // });
 }
 
 export {

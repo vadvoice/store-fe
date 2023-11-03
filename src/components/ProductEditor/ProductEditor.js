@@ -28,7 +28,7 @@ const ProductEditor = (props) => {
    return (
       <div className="ProductEditor">
          <div className="ProductEditor__actions">
-            {!isNewCardAdding ? <Button label="new" onClick={_ => setIsNewCardEdding(true)} /> : null}
+            {!isNewCardAdding ? <Button label="new" onClick={() => setIsNewCardEdding(true)} /> : null}
             {isNewCardAdding ? <EditingСard product={{ status: 1 }} actions={{ onSubmit, onDelete: deleteProduct, onGalleryItemDelete: onGalleryItemDelete }} isEdit={true} /> : null}
          </div>
 

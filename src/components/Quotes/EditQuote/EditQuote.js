@@ -56,7 +56,7 @@ const EditQuote = (props) => {
                         disabled={submitting}
                         type="button"
                         label="discard"
-                        onClick={_ => setIsEditingMode(false)}
+                        onClick={() => setIsEditingMode(false)}
                      />
                   </div>
                </form>
@@ -67,8 +67,8 @@ const EditQuote = (props) => {
    return <div className="EditQuote">
       <div className="EditQuote__view" >
          <h4>{quote.text || '"create quote"'}</h4>
-         <Button label={'edit'} onClick={_ => setIsEditingMode(true)} />
-         <Button danger label={'delete'} onClick={_ => deleteQuote(quote._id)} />
+         <Button label={'edit'} onClick={() => setIsEditingMode(true)} />
+         <Button danger label={'delete'} onClick={() => deleteQuote(quote._id)} />
       </div>
    </div>
 }

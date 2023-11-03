@@ -2,7 +2,7 @@ import React from 'react';
 import { Field } from 'react-final-form';
 import { omit } from 'lodash/fp';
 import classNames from 'classnames';
-import ReactTooltip from 'react-tooltip';
+import { Tooltip } from 'react-tooltip';
 
 import './FormField.scss';
 
@@ -29,7 +29,7 @@ const FormField = props => {
             />
             {error && meta.touched && (
               errorInPopup
-                ? <ReactTooltip id={name} getContent={() => error} place="right" type="dark" effect="solid" />
+                ? <Tooltip id={name} getContent={() => error} place="right" type="dark" effect="solid" />
                 : <div className="form-field--error__error-desc">{error}</div>
             )}
           </div>

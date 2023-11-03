@@ -6,6 +6,7 @@
 
   display: flex;
   justify-content: center;
+  overflow: scroll;
   &__btn {
     position: relative;
     text-transform: capitalize;
@@ -37,6 +38,10 @@
     &--active {
       width: $btnSize * 3;
       background: $accent-color;
+      color: $accent-text;
+    }
+    &--pending {
+      background: $disabled-color;
       color: $accent-text;
     }
   }

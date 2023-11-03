@@ -5,7 +5,7 @@ import {
  
  const baseUrl = '/auth';
  
- export default {
+const methods = {
    login: (data) => {
      return api.request({
        url: `${baseUrl}/login`,
@@ -20,3 +20,5 @@ import {
     })
    }
  }
+
+ export default methods;

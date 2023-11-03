@@ -5,7 +5,7 @@ import {
 
 const baseUrl = '/orders';
 
-export default {
+const methods = {
    activeOrders: () => {
       return api.request({
          url: `${baseUrl}/activeOrders`,
@@ -25,3 +25,5 @@ export default {
       })
    },
 }
+
+export default methods;

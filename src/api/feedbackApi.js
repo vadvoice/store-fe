@@ -5,7 +5,7 @@ import {
  
  const baseUrl = '/feedback';
  
- export default {
+const methods = {
    list: () => {
     return api.request({
       url: `${baseUrl}`,
@@ -20,3 +20,5 @@ import {
      })
    },
  }
+
+ export default methods;

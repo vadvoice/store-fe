@@ -5,7 +5,7 @@ import {
 
 const baseUrl = '/admin';
 
-export default {
+const methods = {
   isAdmin: () => {
     return api.request({
       url: `${baseUrl}/isAdmin`,
@@ -13,3 +13,5 @@ export default {
     })
   },
 }
+
+export default methods

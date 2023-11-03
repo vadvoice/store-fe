@@ -1,49 +1,45 @@
-@import "../../assets/styles/Variables";
+@import '../../assets/styles/Variables';
 
 .About {
-   height: 100vh;
-   display: flex;
-   justify-content: flex-end;
-   align-items: center;
-   flex: 1;
-   overflow: hidden;
-   position: relative;
-   z-index: 1;
-   &__background {
-      video {
-         position: fixed;
-         top: 50%;
-         left: 50%;
-         z-index: -100;
-         min-width: 100%;
-         min-height: 100%;
-         width: auto;
-         height: auto;
-         -webkit-transform: translate(-50%, -50%);
-         -ms-transform: translate(-50%, -50%);
-         transform: translate(-50%, -50%);
-      }
-   }
+  height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  &__background {
+    video {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      z-index: -100;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+  }
 
-   &__content {
-      display: flex;
-      padding: $gap;
-      display: flex;
-      flex-direction: column;
-      color: white;
-      text-align: end;
-   }
-   &__footer {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      padding: $padding;
-      margin-bottom: $margin;
-      button {
-         margin-right: $margin;
-         &:last-child {
-            margin-right: 0;
-         }
-      }
-   }
+  &__content {
+    display: flex;
+    padding: $gap;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    text-align: end;
+  }
+  &__footer {
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: $padding;
+    margin-bottom: $margin;
+  }
 }

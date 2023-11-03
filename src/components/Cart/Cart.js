@@ -15,11 +15,13 @@ import { FaShoppingCart } from 'react-icons/fa';
 import { constants } from '../../config';
 
 import './Cart.scss';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = (props) => {
    const [ isCheckoutVisible, setIsCheckoutVisible ] = useState(false);
-   const { cartProducts, actions } = props;
+   const { cartProducts = [], actions } = props;
    const cartPriceAmount = cartProducts.reduce((acc, p) => acc + p.amount, 0);
+   const navigate = useNavigate();
 
    const renderCheckoutForm = () => {
       return <Form
@@ -90,7 +92,7 @@ const Cart = (props) => {
    if (cartProducts && !cartProducts.length) {
       return <div className="Cart">
          <h3 className="Cart__no-records"><FaShoppingCart /> {constants.cart.noRecordsYet}</h3>
-         <Button onClick={() => props.history.push('/store')} label="store" />
+         <Button onClick={() => navigate('/store')} label="store" />
       </div>
    }
    return (

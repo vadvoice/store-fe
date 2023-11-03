@@ -9,10 +9,10 @@ const AddToCart = (props) => {
    const { actions, product, cartProducts } = props;
 
    if (cartProducts && cartProducts.find(p => p._id === product._id)) {
-      return <Button icon={<MdRemoveShoppingCart />} label={"remove from cart"} danger onClick={e => actions.removeFromCart(product._id)} />
+      return <Button icon={<MdRemoveShoppingCart />} label={"remove from cart"} danger onClick={() => actions.removeFromCart(product._id)} />
    }
    return (
-      <Button icon={<FaCartPlus />} label={`add to cart`} onClick={e => actions.addToCart(product)} />
+      <Button icon={<FaCartPlus />} label={`add to cart`} onClick={() => actions.addToCart(product)} />
    )
 }
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { constants } from '../../config/constants.config';
 
@@ -7,20 +7,22 @@ import { QuotesGenerator } from '../../components';
 
 import './Main.scss';
 import quotesApi from '../../api/quotesApi';
+import { useNavigate } from 'react-router-dom';
 
-class Main extends Component {
-  state = {
-    isLoaded: false,
-    quotes: []
-  }
-  componentDidMount() {
+const Main = () => {
+  const navigate = useNavigate();
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [data, setData] = useState({
+    quotes: [],
+  });
+
+  useEffect(() => {
     setTimeout(() => {
-      this.setState({
-        isLoaded: true
-      })
-    }, 200);
+      setIsLoaded(true);
+    }, 1000);
 
     const nodes = document.querySelectorAll('.ripple');
+
     for (let i = 0; i < nodes.length; i++) {
       let letters = nodes[i].innerText.split('').join('</span><span>');
       letters = letters.split(' ').join('&nbsp;');
@@ -28,37 +30,49 @@ class Main extends Component {
 
       const children = nodes[i].childNodes;
       for (let j = 0; j < children.length; j++) {
-        children[j].style.animationDelay = (j / 10) + 's';
+        children[j].style.animationDelay = j / 10 + 's';
       }
     }
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  redirectToStore = () => {
-    this.props.history.push('/store')
-  }
+  const redirectToStore = () => {
+    navigate('/store');
+  };
 
   // quotes
-  fetchQuotes = async () => {
-    const quotes = await quotesApi.list();
-    this.setState({
-      quotes
-    })
-  }
+  const fetchQuotes = async () => {
+    try {
+      const quotes = await quotesApi.list();
+      setData({
+        ...data,
+        quotes,
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
-  render() {
-    return <div className={classNames({
-      'Main': true,
-      'Main--loading': !this.state.isLoaded
-    })}>
-      <QuotesGenerator data={{ quotes: this.state.quotes }} actions={{ fetchData: this.fetchQuotes }}/>
-      <h1 className="Main__title ripple">
-        {constants.main.title}
-      </h1>
-      <Button info className={'Main__redirect'} onClick={this.redirectToStore} label={constants.main.explore}/>
+  return (
+    <div
+      className={classNames({
+        Main: true,
+        'Main--loading': !isLoaded,
+      })}
+    >
+      <QuotesGenerator
+        data={{ quotes: data.quotes }}
+        actions={{ fetchData: fetchQuotes }}
+      />
+      <h1 className="Main__title ripple">{constants.main.title}</h1>
+      <Button
+        info
+        className={'Main__redirect'}
+        onClick={redirectToStore}
+        label={constants.main.explore}
+      />
     </div>
-  }
-}
-
-export {
-  Main
+  );
 };
+
+export { Main };

@@ -21,7 +21,7 @@ class AuthLogin extends React.Component {
          <Form
             onSubmit={this.submitForm}
             initialValues={{}}
-            render={({ handleSubmit, values, form, submitting }) => (
+            render={({ handleSubmit, submitting }) => (
                <form onSubmit={handleSubmit}>
                   <FormField
                      name="email"

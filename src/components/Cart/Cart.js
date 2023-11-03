@@ -29,7 +29,7 @@ const Cart = (props) => {
             initialValues={{
                price: cartPriceAmount
             }}
-            render={({ handleSubmit, values, form, submitting }) => (
+            render={({ handleSubmit, submitting }) => (
                <form onSubmit={handleSubmit}>
                   <div className="Cart__checkout__row">
                      <FormField
@@ -81,7 +81,7 @@ const Cart = (props) => {
                         primary
                         disabled={submitting}
                         label={constants.common.actions.cancel}
-                        onClick={_ => setIsCheckoutVisible(false)}
+                        onClick={() => setIsCheckoutVisible(false)}
                      />
                   </div>
                </form>

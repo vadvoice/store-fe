@@ -100,7 +100,7 @@ function Feedback(props) {
       y: '+=0',
       repeat: -1,
       modifiers: {
-        y: function (y, count) {
+        y: function () {
           followerVY +=
             (dragger._gsTransform.y - follower._gsTransform.y) * 0.23;
           followerVY *= 0.69;
@@ -302,7 +302,7 @@ function Feedback(props) {
     >
       {showThanks ? (
         <div>
-          <h3 classNames="Feedback__thanks">{constants.feedback.thankYou}</h3>
+          <h3 className="Feedback__thanks">{constants.feedback.thankYou}</h3>
           <Button label={'close'} onClick={onCloseFeedback} />
         </div>
       ) : (
@@ -326,7 +326,7 @@ function Feedback(props) {
             <Button
               success
               label={<FcFeedback />}
-              onClick={(_) => setIsVisible(!isVisible)}
+              onClick={() => setIsVisible(!isVisible)}
             />
           </div>
         </>

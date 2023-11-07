@@ -6,6 +6,7 @@ import { useWindowWidth } from '@react-hook/window-size';
 import './ProductCard.scss';
 
 const ProductCard = (props) => {
+  const touchedClassName = 'ProductCard--touched';
   const cardRef = useRef(null);
   const [coords, setCoors] = useState({
     mouseX: 0,
@@ -50,14 +51,6 @@ const ProductCard = (props) => {
       transform: `translateX(${tX}px) translateY(${tY}px)`,
     };
   };
-  const cardBgImage = () => {
-    return {
-      background: `url(${props.product.imageUrl})`,
-      backgroundSize: '101%',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-    };
-  };
 
   // DESKTOP hover handler
   const handleMouseMove = (e) => {
@@ -82,7 +75,7 @@ const ProductCard = (props) => {
           mouseX: 0,
           mouseY: 0,
         });
-      }, 1000)
+      }, 500)
     );
   };
 
@@ -103,18 +96,31 @@ const ProductCard = (props) => {
     });
   };
   const handleTouchStart = () => {
+    // set active class name for the card
+    if (!cardRef.current.classList.contains(touchedClassName)) {
+      cardRef.current.classList.add(touchedClassName);
+    }
+
+    // set overflow to hinned to prevent page scroll
+    document.body.style.overflow = 'hidden';
     if (mouseLeaveDelay) {
       clearTimeout(mouseLeaveDelay);
     }
   };
   const handleTouchEnd = () => {
+    // allow to scoll once user stops touching the card
+    document.body.style.overflow = 'auto';
+    if (cardRef.current.classList.contains(touchedClassName)) {
+      cardRef.current.classList.remove(touchedClassName);
+    }
+
     setMouseLeaveDelay(
       setTimeout(() => {
         setCoors({
           mouseX: 0,
           mouseY: 0,
         });
-      }, 1000)
+      }, 500)
     );
   };
 
@@ -160,7 +166,13 @@ const ProductCard = (props) => {
         </div>
         <div
           className="card-bg"
-          style={{ ...cardBgTransform(), ...cardBgImage() }}
+          style={{
+            background: `url(${props.product.imageUrl})`,
+            backgroundSize: '101%',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            ...cardBgTransform(),
+          }}
         ></div>
         <div className="card-info">
           <h2 slot="header">{title}</h2>

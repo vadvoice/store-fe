@@ -8,6 +8,7 @@ import {
   removeFromCart,
   checkout,
 } from '../../modules/Cart/cartActions';
+import { setProducts } from '../../modules/Store/storeActions';
 
 import iziToast from 'izitoast';
 import { Products } from '../../components';
@@ -20,20 +21,28 @@ import './Home.scss';
 const HomeContainer = (props) => {
   const [data, setData] = useState({
     isDataLoading: true,
-    products: [],
   });
 
-  const { cartActions, cartProducts, user } = props;
-  const { isDataLoading, products } = data;
+  const { cartActions, cartProducts, storeActions, user, store } = props;
+  const { isDataLoading } = data;
+  const { list } = store;
 
   const fetchProducts = async () => {
-    try {
-      const products = await productApi.list();
+    if (list.length) {
       setData({
         ...data,
-        products,
         isDataLoading: false,
       });
+      return;
+    }
+    try {
+      const products = await productApi.list();
+
+      setData({
+        ...data,
+        isDataLoading: false,
+      });
+      storeActions.setProductsList(products);
     } catch (e) {
       setData({
         ...data,
@@ -51,7 +60,7 @@ const HomeContainer = (props) => {
       {isDataLoading ? <Loader /> : null}
 
       <Products
-        products={products}
+        products={list}
         cartProducts={cartProducts}
         user={user}
         actions={{
@@ -64,9 +73,14 @@ const HomeContainer = (props) => {
   );
 };
 
-const mapStateToProps = ({ cart: { cartProducts }, auth: { user } }) => ({
+const mapStateToProps = ({
+  cart: { cartProducts },
+  auth: { user },
+  store,
+}) => ({
   cartProducts,
   user,
+  store,
 });
 
 const mapActionsToProps = (dispatch) => {
@@ -83,6 +97,11 @@ const mapActionsToProps = (dispatch) => {
         dispatch(addToCart(product));
       },
       checkout: () => dispatch(checkout()),
+    },
+    storeActions: {
+      setProductsList: (products) => {
+        dispatch(setProducts(products));
+      },
     },
   };
 };

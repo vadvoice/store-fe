@@ -60,7 +60,6 @@ const Header = (props) => {
       <header className="AppHeader AppHeader--fullsize">
         <div className="AppHeader__navigation" title={navigation.home}>
           <NavLink
-            // className="AppHeader__navigation__icon"
             to={`/`}
             className={({ isActive }) =>
               `AppHeader__navigation__icon ${
@@ -111,17 +110,23 @@ const Header = (props) => {
     <header className="AppHeader">
       <div className="AppHeader__navigation">
         <NavLink
-          className="AppHeader__navigation__icon"
           to={`/`}
-          activeClassName={'AppHeader__navigation__icon--active'}
+          className={({ isActive }) =>
+            `AppHeader__navigation__icon ${
+              isActive ? 'AppHeader__navigation__icon--active' : ''
+            }`
+          }
           title={'home'}
         >
           {renderLogo()}
         </NavLink>
         <NavLink
-          className="AppHeader__navigation__icon"
+          className={({ isActive }) =>
+            `AppHeader__navigation__icon ${
+              isActive ? 'AppHeader__navigation__icon--active' : ''
+            }`
+          }
           to={`/about`}
-          activeClassName={'AppHeader__navigation__icon--active'}
           title={'about'}
         >
           <FaInfoCircle />

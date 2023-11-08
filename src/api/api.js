@@ -5,8 +5,8 @@ const REQUEST_METHODS = {
   get: 'GET',
   post: 'POST',
   delete: 'DELETE',
-  update: 'PUT'
-}
+  update: 'PUT',
+};
 
 const axiosConfig = {
   baseURL,
@@ -15,27 +15,25 @@ const axiosConfig = {
   headers: {
     'Content-Type': 'application/json',
   },
-  timeout: 15000
+  timeout: 15000,
 };
 
 const axiosInstance = axios.create(axiosConfig);
 
 const api = {
-  request(options) {
+  request(options = {}) {
     let authToken = '';
     if (localStorage.auth) {
       const { token } = JSON.parse(localStorage.auth);
       authToken = token;
-    }
-    options.headers = Object.assign(
-      options.headers = {}, {
-        Authorization: `${authToken}`,
-      }
-    );
-    return axiosInstance(options)
-      .then(res => res.data)
-      .catch(async error => {
 
+      options.headers = Object.assign((options.headers = {}), {
+        Authorization: `${authToken}`,
+      });
+    }
+    return axiosInstance(options)
+      .then((res) => res.data)
+      .catch(async (error) => {
         if (error && error.response && error.response.status === 401) {
           console.time('refreshToken');
           // TODO: REDO
@@ -48,7 +46,7 @@ const api = {
           // that falls out of the range of 2xx
           console.error({
             status: status,
-            headers: headers
+            headers: headers,
           });
           reportProblem((data && data.message) || error);
         } else if (error.request) {
@@ -61,13 +59,13 @@ const api = {
           console.error('Error', error);
           reportProblem(error.message || error);
         }
-        if(!error.response) {
+        if (!error.response) {
           // just show error for user
           reportProblem(error);
         }
         throw error;
-      })
-  }
+      });
+  },
 };
 
 // TODO: must be called automatically by timer
@@ -84,7 +82,4 @@ function reportProblem(message) {
   // });
 }
 
-export {
-  api,
-  REQUEST_METHODS
-};
+export { api, REQUEST_METHODS };

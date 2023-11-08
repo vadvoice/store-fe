@@ -1,7 +1,8 @@
-import { SET_PRODUCTS } from './storeActionTypes';
+import { SET_PRODUCTS, SET_QUOTES } from './storeActionTypes';
 
 export const initialStoreState = {
   list: [],
+  quotesList: [],
   amount: 0,
 };
 
@@ -12,6 +13,13 @@ const reducer = (state = initialStoreState, action) => {
         ...state,
         list: action.payload,
         amount: state.amount + action.payload.length,
+      };
+    }
+
+    case SET_QUOTES: {
+      return {
+        ...state,
+        quotesList: action.payload,
       };
     }
 

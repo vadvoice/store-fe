@@ -23,7 +23,7 @@ const QuotesGenerator = (props) => {
 
   return (
     <div className="QuotesGenerator">
-      <p>{activeQuote?.text}</p>
+      <p>{activeQuote?.content}</p>
       <i>{activeQuote ? `- ${activeQuote.author}` : ''}</i>
     </div>
   );

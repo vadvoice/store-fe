@@ -1,3 +1,4 @@
 const SET_PRODUCTS = 'SET_PRODUCTS';
+const SET_QUOTES = 'SET_QUOTES';
 
-export { SET_PRODUCTS };
+export { SET_PRODUCTS, SET_QUOTES };

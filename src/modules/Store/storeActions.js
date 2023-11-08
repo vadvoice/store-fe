@@ -1,13 +1,13 @@
+import { SET_PRODUCTS, SET_QUOTES } from './storeActionTypes';
 
-import {
-  SET_PRODUCTS,
-} from './storeActionTypes';
-
-const setProducts = products => ({
+const setProducts = (products) => ({
   type: SET_PRODUCTS,
-  payload: products
+  payload: products,
 });
 
-export {
-  setProducts,
-};
+const setQuotes = (list) => ({
+  type: SET_QUOTES,
+  payload: list,
+});
+
+export { setProducts, setQuotes };

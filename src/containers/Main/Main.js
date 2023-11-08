@@ -2,19 +2,21 @@ import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { constants } from '../../config/constants.config';
 
-import { Button } from '../../components/Common';
+import { Button, Loader } from '../../components/Common';
 import { QuotesGenerator } from '../../components';
 
-import './Main.scss';
+import { setQuotes } from '../../modules/Store/storeActions';
+
+import { connect } from 'react-redux';
+
 import quotesApi from '../../api/quotesApi';
 import { useNavigate } from 'react-router-dom';
 
-const Main = () => {
+import './Main.scss';
+
+const MainContainer = ({ storeActions: { setQuotes }, store }) => {
   const navigate = useNavigate();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [data, setData] = useState({
-    quotes: [],
-  });
 
   useEffect(() => {
     setTimeout(() => {
@@ -41,12 +43,13 @@ const Main = () => {
 
   // quotes
   const fetchQuotes = async () => {
+    // prevent API call if quotes are already fetched
+    if (store.quotesList.length) {
+      return;
+    }
     try {
       const quotes = await quotesApi.list();
-      setData({
-        ...data,
-        quotes,
-      });
+      setQuotes(quotes);
     } catch (e) {
       console.error(e);
     }
@@ -59,8 +62,9 @@ const Main = () => {
         'Main--loading': !isLoaded,
       })}
     >
+      {!isLoaded && <Loader />}
       <QuotesGenerator
-        data={{ quotes: data.quotes }}
+        data={{ quotes: store.quotesList }}
         actions={{ fetchData: fetchQuotes }}
       />
       <h1 className="Main__title ripple">{constants.main.title}</h1>
@@ -73,5 +77,21 @@ const Main = () => {
     </div>
   );
 };
+
+const mapStateToProps = ({ store }) => ({
+  store,
+});
+
+const mapActionsToProps = (dispatch) => {
+  return {
+    storeActions: {
+      setQuotes: (products) => {
+        dispatch(setQuotes(products));
+      },
+    },
+  };
+};
+
+const Main = connect(mapStateToProps, mapActionsToProps)(MainContainer);
 
 export { Main };

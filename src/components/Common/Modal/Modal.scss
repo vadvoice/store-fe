@@ -37,7 +37,8 @@
    &__content {
       display: flex;
       flex-direction: column;
-      padding: $gap $padding;
+      padding: $padding;
+      padding-top: $padding*2;
       flex: 1;
       overflow: scroll;
    }

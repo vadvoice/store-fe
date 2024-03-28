@@ -2,6 +2,8 @@
 @import '../../../assets/styles/Animations';
 
 .common-btn {
+  display: flex;
+  align-items: center;
   font-family: inherit;
   min-width: 150px;
   padding: $margin;
@@ -30,7 +32,11 @@
   &__icon {
     height: 1em;
     width: 2em;
-    margin-right: $margin;
+    margin-right: $inline-spacing;
+  }
+
+  &__extra {
+    margin-left: $padding;
   }
 
   &__processing {

@@ -27,20 +27,16 @@ const Modal = (props) => {
       }
    };
    if (window.innerWidth < 768) {
-      customStyles.content.width = '100%';
+      customStyles.content.width = '95%';
+      customStyles.content.height = '95%';
    }
    
    return <ReactModal
       isOpen={isModalOpen}
-      // onAfterOpen={afterOpenModal}
       onRequestClose={onClose}
       style={customStyles}
       contentLabel={header}
       portalClassName={'portal-modal'}
-      
-      // classNames={
-      //    AnimationEffect
-      // }
    >
       <div className="ReactModal__Content__header">
          <h2>
@@ -52,28 +48,6 @@ const Modal = (props) => {
          {children}
       </div>
    </ReactModal>
-
-   // return (
-   //    <div className="Modal">
-   //       <ReactModal
-   //          visible={isModalOpen}
-   //          width="80%"
-   //          height="80%"
-   //          effect="fadeInUp"
-   //          onClickAway={onClose}
-   //       >
-   //          <div className="Modal__header">
-   //             <h2>
-   //                {header}
-   //             </h2>
-   //             <AiOutlineCloseCircle onClick={onClose} />
-   //          </div>
-   //          <div className="Modal__content">
-   //             {children}
-   //          </div>
-   //       </ReactModal>
-   //    </div>
-   // );
 }
 
 export {

@@ -3,19 +3,30 @@ import { Button } from '../../Common';
 import { FaCartPlus } from 'react-icons/fa';
 import { MdRemoveShoppingCart } from 'react-icons/md';
 
+import { PriceTag } from '../PriceTag/PriceTag';
 import './AddToCart.scss';
 
 const AddToCart = (props) => {
-   const { actions, product, cartProducts } = props;
+  const { actions, product, cartProducts } = props;
 
-   if (cartProducts && cartProducts.find(p => p._id === product._id)) {
-      return <Button icon={<MdRemoveShoppingCart />} label={"remove from cart"} danger onClick={() => actions.removeFromCart(product._id)} />
-   }
-   return (
-      <Button icon={<FaCartPlus />} label={`add to cart`} onClick={() => actions.addToCart(product)} />
-   )
-}
+  if (cartProducts && cartProducts.find((p) => p._id === product._id)) {
+    return (
+      <Button
+        icon={<MdRemoveShoppingCart />}
+        label={'remove from cart'}
+        danger
+        onClick={() => actions.removeFromCart(product._id)}
+      />
+    );
+  }
+  return (
+    <Button
+      icon={<FaCartPlus />}
+      label={'add to cart'}
+      extraContent={<PriceTag product={product} />}
+      onClick={() => actions.addToCart(product)}
+    />
+  );
+};
 
-export {
-   AddToCart
-}
+export { AddToCart };

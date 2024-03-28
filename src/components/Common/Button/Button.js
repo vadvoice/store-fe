@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import './Button.scss';
 
-export const Button = ({ success, info, warning, danger, onClick, className, label, submit, icon, disabled }) => (
+export const Button = ({ success, info, warning, danger, onClick, className, label, submit, icon, disabled, extraContent }) => (
   <button
     className={classNames(
       className,
@@ -22,5 +22,6 @@ export const Button = ({ success, info, warning, danger, onClick, className, lab
   >
     {icon ? <span className="common-btn__icon">{icon}</span> : null}
     {label}
+    {extraContent ? <span className='common-btn__extra'>{extraContent}</span> : null}
   </button>
 );

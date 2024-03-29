@@ -220,13 +220,13 @@ function Feedback(props) {
             />
 
             <g className="dragger" transform="translate(-6, 0)">
-              <circle cx="294" cy="540" r="36" fill="#3A3335" />
+              <circle cx="254" cy="540" r="70" fill="#3A3335" />
               <path
                 className="dragTip"
                 d="M315.5,556.76,299.24,540.5l16.26-16.26,36.26,16.26Z"
                 fill="#3A3335"
               />
-              <text className="label" x="294" y="551">
+              <text className="label" x="264" y="551">
                 100
               </text>
             </g>
@@ -311,6 +311,7 @@ function Feedback(props) {
             <h4>{constants.feedback.leaveUsFeedBack}</h4>
             {renderRateContainer()}
             <TextInput
+              placeholder={constants.feedback.commentLabel}
               maxLength="100"
               label={constants.feedback.commentLabel}
               value={comment}

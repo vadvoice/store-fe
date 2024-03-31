@@ -5,6 +5,7 @@ import {
    FormField,
    TextInput,
    NumberInput,
+   TextAreaInput,
 } from '../Inputs';
 import {
    required,
@@ -34,17 +35,9 @@ const Cart = (props) => {
                   <div className="Cart__checkout__row">
                      <FormField
                         name="email"
-                        label={constants.common.fields.email}
+                        placeholder="Email"
+                        label={`${constants.common.fields.email} *`}
                         type="email"
-                        component={TextInput}
-                        validate={required}
-                     />
-                     <FormField
-                        name="phone"
-                        type="tel"
-                        pattern="[+]{1}[0-9]{12}"
-                        title="Phone in format +380638239194"
-                        label={constants.common.fields.phone}
                         component={TextInput}
                         validate={required}
                      />
@@ -54,20 +47,18 @@ const Cart = (props) => {
                         name="from"
                         label={constants.common.fields.userName}
                         component={TextInput}
-                        validate={required}
                      />
                      <FormField
                         name="price"
                         disabled={true}
-                        label={constants.common.fields.price}
+                        label={`${constants.common.fields.price} ($) *`}
                         component={NumberInput}
                      />
-
                   </div>
                   <FormField
                      name="comment"
                      label={constants.common.fields.comment}
-                     component={TextInput}
+                     component={TextAreaInput}
                   />
                   <div className="Cart__checkout__actions">
                      <Button

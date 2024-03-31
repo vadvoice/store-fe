@@ -22,7 +22,7 @@ class SelectInput extends Component {
     const { className, value, label, multiple, options, allowEmpty, size } = this.props;
 
     return (
-      <div className={classNames(className, 'hme-input select-input')}>
+      <div className={classNames(className, 'common-input select-input')}>
         {label && (
           <label htmlFor={label}>{label}</label>
         )}

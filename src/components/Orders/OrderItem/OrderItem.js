@@ -1,5 +1,5 @@
 import React from 'react';
-import moment from 'moment';
+import { format } from "date-fns";
 import { Button } from '../../Common/Button/Button';
 import { constants } from '../../../config';
 
@@ -25,7 +25,7 @@ const OrderItem = (props) => {
    return (
       <div className="OrderItem">
          <h1>{order.amount} {order.currency}</h1>
-         {moment(order.createdAt).format('ll')}
+         {format(order.createdAt, 'Pp')}
          <InfoRow data={{ name: 'name', value: order.from }} />
          <InfoRow data={{ name: 'email', value: order.email }} />
          <InfoRow data={{ name: 'phone', value: order.phone }} />

@@ -1,21 +1,31 @@
-import React from 'react'
+import React from 'react';
 import { constants } from '../../../config';
+import classNames from 'classnames';
 
 import './PriceTag.scss';
 
 const PriceTag = (props) => {
-   const { amount, currency, status } = props.product;
-   return (
-      <div className="PriceTag">
-         {
-            status !== 0
-            ? <span>{constants.product.soldOut}</span>
-            : <span>{`${amount} ${currency}`}</span>
-         }
-      </div>
-   )
-}
+  const { amount, currency, status } = props.product;
 
-export {
-   PriceTag
-}
+  const readableStatus = {
+    0: 'available',
+    1: 'soldOut',
+  };
+
+  return (
+    <div
+      className={classNames(`PriceTag--${readableStatus[status]}`, {
+        PriceTag: true,
+        'PriceTag--soldOut': status !== 0,
+      })}
+    >
+      {status !== 0 ? (
+        <span>{constants.product.soldOut}</span>
+      ) : (
+        <span>{`${amount} ${currency}`}</span>
+      )}
+    </div>
+  );
+};
+
+export { PriceTag };

@@ -19,7 +19,6 @@ const PurchasesContainer = (props) => {
   const { cartActions, cartProducts } = props;
 
   const onCheckout = async (values) => {
-    const { cartProducts, cartActions } = this.props;
     try {
       await paymentApi.checkout({
         products: cartProducts.map((p) => p._id),
@@ -32,6 +31,7 @@ const PurchasesContainer = (props) => {
       });
     } catch (e) {
       console.error(e);
+      iziToast.error(e);
     }
   };
 
@@ -40,7 +40,7 @@ const PurchasesContainer = (props) => {
       <Cart
         actions={{
           ...cartActions,
-          onCheckout: onCheckout,
+          onCheckout,
         }}
         cartProducts={cartProducts}
       />

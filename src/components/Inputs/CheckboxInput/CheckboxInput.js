@@ -19,7 +19,7 @@ class CheckboxInput extends Component {
     const { className, label, name, value } = this.props;
 
     return (
-      <div className={classNames(className, 'hme-input checkbox-input')}>
+      <div className={classNames(className, 'common-input checkbox-input')}>
         <input
           {...this.props}
           id={name}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 
-import './TestAreaInput.scss';
+import './TextAreaInput.scss';
 
 class TextAreaInput extends Component {
   constructor() {
@@ -22,7 +22,7 @@ class TextAreaInput extends Component {
     const { name, label, className } = this.props;
 
     return (
-      <div className={classNames(className, 'hme-input text-area-input')}>
+      <div className={classNames(className, 'common-input text-area-input')}>
 
         {label && (
           <label htmlFor={name}>{label}</label>

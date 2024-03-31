@@ -10,7 +10,7 @@ class RadioInput extends Component {
     const { className, label, value, options, onChange } = this.props
 
     return (
-      <div className={classNames(className, 'hme-input multiple-radio-input')}>
+      <div className={classNames(className, 'common-input multiple-radio-input')}>
 
         {label && (
           <label>{label}</label>

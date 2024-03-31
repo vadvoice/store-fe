@@ -20,7 +20,7 @@ class TextInput extends Component {
     const { name, label, className, type } = this.props;
 
     return (
-      <div className={classNames(className, 'hme-input text-input')}>
+      <div className={classNames(className, 'common-input text-input')}>
 
         {label && (
           <label htmlFor={name}>{label}</label>

@@ -18,7 +18,7 @@ class NumberInput extends Component {
     const { name, label, className } = this.props;
 
     return (
-      <div className={classNames(className, 'hme-input number-input')}>
+      <div className={classNames(className, 'common-input number-input')}>
 
         {label && (
           <label htmlFor={name}>{label}</label>

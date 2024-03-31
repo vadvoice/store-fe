@@ -23,7 +23,7 @@ class MultipleCheckboxInput extends Component {
     const { className, label, renderLabel, value, enums, vertical, disabled } = this.props;
 
     return (
-      <div className={classNames(className, 'hme-input', 'multiple-checkbox-input')}>
+      <div className={classNames(className, 'common-input', 'multiple-checkbox-input')}>
         {renderLabel && renderLabel()}
         {!renderLabel && label && (
           <label>{label}</label>

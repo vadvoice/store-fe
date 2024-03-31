@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import moment from 'moment';
+import { format } from "date-fns";
 
 import './Stats.scss';
 import InfoRow from '../Common/InfoRow/InfoRow';
@@ -24,7 +24,7 @@ const Stats = (props) => {
                               <h4>{s.ip}</h4>
                               <InfoRow data={{ name: 'browser/os', value: `${s.userAgent.browser}/${s.userAgent.os}` }} />
                               <InfoRow data={{ name: 'timezone/city', value: `${s.stats && s.stats.timezone}/${s.stats && s.stats.city}` }} />
-                              <InfoRow data={{ name: 'visit', value: moment(s.timestamp).format() }} />
+                              <InfoRow data={{ name: 'visit', value: format(new Date(s.timestamp), 'yyyy-MM-dd') }} />
                            </div>
                            <hr />
                         </div>

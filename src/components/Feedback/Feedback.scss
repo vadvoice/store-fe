@@ -5,8 +5,8 @@
   text-align: center;
   width: 250px;
   height: 335px;
-  position: absolute;
-  top: 40%;
+  position: fixed;
+  top: 20%;
   display: flex;
   align-items: center;
   transform: translate(-100%, 0);
@@ -35,10 +35,18 @@
 
   &__rate-container {
     padding: $padding;
-    background: radial-gradient(rgba(16, 47, 67, 0.5), transparent);
+    // background: radial-gradient(rgba(16, 47, 67, 0.5), #ccc);
+    background: #BBD2C5;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #536976, #BBD2C5);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #536976, #BBD2C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 0 20px 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   &__trigger {
+    display: flex;
     button {
       width: 50px;
       min-width: auto;
@@ -56,7 +64,7 @@
   .label {
     color: white;
     fill: #fffcf9;
-    font-size: 1.8em;
+    font-size: 5em;
     text-anchor: middle;
     letter-spacing: 1.2px;
   }

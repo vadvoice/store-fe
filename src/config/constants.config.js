@@ -62,7 +62,7 @@ const constants = {
     },
     fields: {
       email: 'Email',
-      userName: 'User name',
+      userName: 'Your name',
       comment: 'Comment',
       submit: 'Submit',
       price: 'Price',

@@ -14,7 +14,9 @@ import { Admin } from '../containers';
 
 import { Feedback } from '../components';
 
+import { BrandMark } from 'brand-mark';
 import './App.scss';
+import 'brand-mark/dist/style.css';
 
 function App() {
   const mode = 'user';
@@ -72,6 +74,7 @@ function App() {
   return (
     <>
       <Feedback actions={{ onLeaveFeedback }} />
+      <BrandMark src="https://github.com/vadvoice" title="VizionArts" />
       <RouterProvider router={router} />
     </>
   );
